@@ -23,6 +23,390 @@
                         }
                     });
         </script>  
+ <style>/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* --- INLINES --- */
+em.rfc2119 { 
+    text-transform:     lowercase;
+    font-variant:       small-caps;
+    font-style:         normal;
+    color:              #900;
+}
+
+h1 acronym, h2 acronym, h3 acronym, h4 acronym, h5 acronym, h6 acronym, a acronym,
+h1 abbr, h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr, a abbr {
+    border: none;
+}
+
+dfn {
+    font-weight:    bold;
+}
+
+a.internalDFN {
+    color:  inherit;
+    border-bottom:  1px solid #99c;
+    text-decoration:    none;
+}
+
+a.externalDFN {
+    color:  inherit;
+    border-bottom:  1px dotted #ccc;
+    text-decoration:    none;
+}
+
+a.bibref {
+    text-decoration:    none;
+}
+
+cite .bibref {
+    font-style: normal;
+}
+
+code {
+    color:  #C83500;
+}
+
+/* --- TOC --- */
+.toc a, .tof a {
+    text-decoration:    none;
+}
+
+a .secno, a .figno {
+    color:  #000;
+}
+
+ul.tof, ol.tof {
+    list-style: none outside none;
+}
+
+.caption {
+    margin-top: 0.5em;
+    font-style:   italic;
+}
+
+/* --- TABLE --- */
+table.simple {
+    border-spacing: 0;
+    border-collapse:    collapse;
+    border-bottom:  3px solid #005a9c;
+}
+
+.simple th {
+    background: #005a9c;
+    color:  #fff;
+    padding:    3px 5px;
+    text-align: left;
+}
+
+.simple th[scope="row"] {
+    background: inherit;
+    color:  inherit;
+    border-top: 1px solid #ddd;
+}
+
+.simple td {
+    padding:    3px 10px;
+    border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+    background: #f0f6ff;
+}
+
+/* --- DL --- */
+.section dd > p:first-child {
+    margin-top: 0;
+}
+
+.section dd > p:last-child {
+    margin-bottom: 0;
+}
+
+.section dd {
+    margin-bottom:  1em;
+}
+
+.section dl.attrs dd, .section dl.eldef dd {
+    margin-bottom:  0;
+}
+
+@media print {
+    .removeOnSave {
+        display: none;
+    }
+}
+</style><style>/* --- EXAMPLES --- */
+div.example-title {
+    min-width: 7.5em;
+    color: #b9ab2d;
+}
+div.example-title span {
+    text-transform: uppercase;   
+}
+aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+div.illegal-example { color: red }
+div.illegal-example p { color: black }
+aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;    
+}
+
+aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+}
+aside.example div.example div.example-title {
+    color: #999;
+}
+</style><style>/* HIGHLIGHTS */
+code.prettyprint {
+    color:  inherit;
+}
+
+/* this from google-code-prettify */
+.pln{color:#000}@media screen{.str{color:#080}.kwd{color:#008}.com{color:#800}.typ{color:#606}.lit{color:#066}.pun,.opn,.clo{color:#660}.tag{color:#008}.atn{color:#606}.atv{color:#080}.dec,.var{color:#606}.fun{color:red}}@media print,projection{.str{color:#060}.kwd{color:#006;font-weight:bold}.com{color:#600;font-style:italic}.typ{color:#404;font-weight:bold}.lit{color:#044}.pun,.opn,.clo{color:#440}.tag{color:#006;font-weight:bold}.atn{color:#404}.atv{color:#060}}ol.linenums{margin-top:0;margin-bottom:0}li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8{list-style-type:none}li.L1,li.L3,li.L5,li.L7,li.L9{background:#eee}
+</style><style>/* --- WEB IDL --- */
+pre.idl {
+    border-top: 1px solid #90b8de;
+    border-bottom: 1px solid #90b8de;
+    padding:    1em;
+    line-height:    120%;
+}
+
+pre.idl::before {
+    content:    "WebIDL";
+    display:    block;
+    width:      150px;
+    background: #90b8de;
+    color:  #fff;
+    font-family:    initial;
+    padding:    3px;
+    font-weight:    bold;
+    margin: -1em 0 1em -1em;
+}
+
+.idlType {
+    color:  #ff4500;
+    font-weight:    bold;
+    text-decoration:    none;
+}
+
+/*.idlModule*/
+/*.idlModuleID*/
+/*.idlInterface*/
+.idlInterfaceID, .idlDictionaryID, .idlCallbackID, .idlEnumID {
+    font-weight:    bold;
+    color:  #005a9c;
+}
+a.idlEnumItem {
+    color:  #000;
+    border-bottom:  1px dotted #ccc;
+    text-decoration: none;
+}
+
+.idlSuperclass {
+    font-style: italic;
+    color:  #005a9c;
+}
+
+/*.idlAttribute*/
+.idlAttrType, .idlFieldType, .idlMemberType {
+    color:  #005a9c;
+}
+.idlAttrName, .idlFieldName, .idlMemberName {
+    color:  #ff4500;
+}
+.idlAttrName a, .idlFieldName a, .idlMemberName a {
+    color:  #ff4500;
+    border-bottom:  1px dotted #ff4500;
+    text-decoration: none;
+}
+
+/*.idlMethod*/
+.idlMethType, .idlCallbackType {
+    color:  #005a9c;
+}
+.idlMethName {
+    color:  #ff4500;
+}
+.idlMethName a {
+    color:  #ff4500;
+    border-bottom:  1px dotted #ff4500;
+    text-decoration: none;
+}
+
+/*.idlCtor*/
+.idlCtorName {
+    color:  #ff4500;
+}
+.idlCtorName a {
+    color:  #ff4500;
+    border-bottom:  1px dotted #ff4500;
+    text-decoration: none;
+}
+
+/*.idlParam*/
+.idlParamType {
+    color:  #005a9c;
+}
+.idlParamName, .idlDefaultValue {
+    font-style: italic;
+}
+
+.extAttr {
+    color:  #666;
+}
+
+/*.idlSectionComment*/
+.idlSectionComment {
+    color: gray;
+}
+
+/*.idlConst*/
+.idlConstType {
+    color:  #005a9c;
+}
+.idlConstName {
+    color:  #ff4500;
+}
+.idlConstName a {
+    color:  #ff4500;
+    border-bottom:  1px dotted #ff4500;
+    text-decoration: none;
+}
+
+/*.idlException*/
+.idlExceptionID {
+    font-weight:    bold;
+    color:  #c00;
+}
+
+.idlTypedefID, .idlTypedefType {
+    color:  #005a9c;
+}
+
+.idlRaises, .idlRaises a.idlType, .idlRaises a.idlType code, .excName a, .excName a code {
+    color:  #c00;
+    font-weight:    normal;
+}
+
+.excName a {
+    font-family:    monospace;
+}
+
+.idlRaises a.idlType, .excName a.idlType {
+    border-bottom:  1px dotted #c00;
+}
+
+.excGetSetTrue, .excGetSetFalse, .prmNullTrue, .prmNullFalse, .prmOptTrue, .prmOptFalse {
+    width:  45px;
+    text-align: center;
+}
+.excGetSetTrue, .prmNullTrue, .prmOptTrue { color:  #0c0; }
+.excGetSetFalse, .prmNullFalse, .prmOptFalse { color:  #c00; }
+
+.idlImplements a {
+    font-weight:    bold;
+}
+
+dl.attributes, dl.methods, dl.constants, dl.constructors, dl.fields, dl.dictionary-members {
+    margin-left:    2em;
+}
+
+.attributes dt, .methods dt, .constants dt, .constructors dt, .fields dt, .dictionary-members dt {
+    font-weight:    normal;
+}
+
+.attributes dt code, .methods dt code, .constants dt code, .constructors dt code, .fields dt code, .dictionary-members dt code {
+    font-weight:    bold;
+    color:  #000;
+    font-family:    monospace;
+}
+
+.attributes dt code, .fields dt code, .dictionary-members dt code {
+    background:  #ffffd2;
+}
+
+.attributes dt .idlAttrType code, .fields dt .idlFieldType code, .dictionary-members dt .idlMemberType code {
+    color:  #005a9c;
+    background:  transparent;
+    font-family:    inherit;
+    font-weight:    normal;
+    font-style: italic;
+}
+
+.methods dt code {
+    background:  #d9e6f8;
+}
+
+.constants dt code {
+    background:  #ddffd2;
+}
+
+.constructors dt code {
+    background:  #cfc;
+}
+
+.attributes dd, .methods dd, .constants dd, .constructors dd, .fields dd, .dictionary-members dd {
+    margin-bottom:  1em;
+}
+
+table.parameters, table.exceptions {
+    border-spacing: 0;
+    border-collapse:    collapse;
+    margin: 0.5em 0;
+    width:  100%;
+}
+table.parameters { border-bottom:  1px solid #90b8de; }
+table.exceptions { border-bottom:  1px solid #deb890; }
+
+.parameters th, .exceptions th {
+    color:  #fff;
+    padding:    3px 5px;
+    text-align: left;
+    font-family:    initial;
+    font-weight:    normal;
+    text-shadow:    #666 1px 1px 0;
+}
+.parameters th { background: #90b8de; }
+.exceptions th { background: #deb890; }
+
+.parameters td, .exceptions td {
+    padding:    3px 10px;
+    border-top: 1px solid #ddd;
+    vertical-align: top;
+}
+
+.parameters tr:first-child td, .exceptions tr:first-child td {
+    border-top: none;
+}
+
+.parameters td.prmName, .exceptions td.excName, .exceptions td.excCodeName {
+    width:  100px;
+}
+
+.parameters td.prmType {
+    width:  120px;
+}
+
+table.exceptions table {
+    border-spacing: 0;
+    border-collapse:    collapse;
+    width:  100%;
+}
+</style>
 <link href="cg-draft.css" rel="stylesheet" type="text/css" charset="utf-8" />
 
 
@@ -100,11 +484,301 @@ It can be specialized to create new classes and properties. It can be mapped to 
     </div>
 </div>
 
-<hr /><div id="classes"><h2>Classes</h2><ul class="hlist"><li><a href="#d4e147" title="http://www.w3.org/ns/mls#Algorithm"><span>algorithm</span></a></li><li><a href="#d4e160" title="http://www.w3.org/ns/mls#Data"><span>data</span></a></li><li><a href="#d4e183" title="http://www.w3.org/ns/mls#DataCharacteristic"><span>data characteristic</span></a></li><li><a href="#d4e197" title="http://www.w3.org/ns/mls#Dataset"><span>dataset</span></a></li><li><a href="#d4e204" title="http://www.w3.org/ns/mls#DatasetCharacteristic"><span>dataset characteristic</span></a></li><li><a href="#d4e211" title="http://www.w3.org/ns/mls#EvaluationMeasure"><span>evaluation measure</span></a></li><li><a href="#d4e225" title="http://www.w3.org/ns/mls#EvaluationProcedure"><span>evaluation procedure</span></a></li><li><a href="#d4e238" title="http://www.w3.org/ns/mls#EvaluationSpecification"><span>evaluation specification</span></a></li><li><a href="#d4e271" title="http://www.w3.org/ns/mls#Experiment"><span>experiment</span></a></li><li><a href="#d4e295" title="http://www.w3.org/ns/mls#Feature"><span>feature</span></a></li><li><a href="#d4e302" title="http://www.w3.org/ns/mls#FeatureCharacteristic"><span>feature characteristic</span></a></li><li><a href="#d4e309" title="http://www.w3.org/ns/mls#HyperParameter"><span>hyper parameter</span></a></li><li><a href="#d4e323" title="http://www.w3.org/ns/mls#HyperParameterSetting"><span>hyper parameter setting</span></a></li><li><a href="#d4e356" title="http://www.w3.org/ns/mls#Implementation"><span>implementation</span></a></li><li><a href="#d4e400" title="http://www.w3.org/ns/mls#ImplementationCharacteristic"><span>implementation characteristic</span></a></li><li><a href="#d4e418" title="http://www.w3.org/ns/mls#Investigation"><span>investigation</span></a></li><li><a href="#d4e435" title="http://www.w3.org/ns/mls#Model"><span>model</span></a></li><li><a href="#d4e459" title="http://www.w3.org/ns/mls#ModelCharacteristic"><span>model characteristic</span></a></li><li><a href="#d4e472" title="http://www.w3.org/ns/mls#ModelEvaluation"><span>model evaluation</span></a></li><li><a href="#d4e505" title="http://www.w3.org/ns/mls#Process">Process</a></li><li><a href="#d4e514" title="http://www.w3.org/ns/mls#Run"><span>run</span></a></li><li><a href="#d4e578" title="http://www.w3.org/ns/mls#Study"><span>study</span></a></li><li><a href="#d4e601" title="http://www.w3.org/ns/mls#Task"><span>task</span></a></li></ul><div id="d4e147" class="entity"><a name="http://www.w3.org/ns/mls#Algorithm"></a><h3>algorithm<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Algorithm</p><div class="comment"><span class="markdown">The algorithm regardless software implementation.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e160" class="entity"><a name="http://www.w3.org/ns/mls#Data"></a><h3>data<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Data</p><div class="comment"><span class="markdown">Data is a data item composed of data examples and it may be of a various level of granularity and complexity. 
+
+
+<hr /><div id="classes"><h2>Classes</h2><ul class="hlist">
+<li><a href="#d4e147" title="http://www.w3.org/ns/mls#Algorithm"><span>algorithm</span></a></li>
+<li><a href="#d4e160" title="http://www.w3.org/ns/mls#Data"><span>data</span></a></li>
+<li><a href="#d4e183" title="http://www.w3.org/ns/mls#DataCharacteristic"><span>data characteristic</span></a></li>
+<li><a href="#d4e197" title="http://www.w3.org/ns/mls#Dataset"><span>dataset</span></a></li>
+<li><a href="#d4e204" title="http://www.w3.org/ns/mls#DatasetCharacteristic"><span>dataset characteristic</span></a></li>
+<li><a href="#d4e211" title="http://www.w3.org/ns/mls#EvaluationMeasure"><span>evaluation measure</span></a></li>
+<li><a href="#d4e225" title="http://www.w3.org/ns/mls#EvaluationProcedure"><span>evaluation procedure</span></a></li>
+<li><a href="#d4e238" title="http://www.w3.org/ns/mls#EvaluationSpecification"><span>evaluation specification</span></a></li>
+<li><a href="#d4e271" title="http://www.w3.org/ns/mls#Experiment"><span>experiment</span></a></li>
+<li><a href="#d4e295" title="http://www.w3.org/ns/mls#Feature"><span>feature</span></a></li>
+<li><a href="#d4e302" title="http://www.w3.org/ns/mls#FeatureCharacteristic"><span>feature characteristic</span></a></li>
+<li><a href="#d4e309" title="http://www.w3.org/ns/mls#HyperParameter"><span>hyper parameter</span></a></li>
+<li><a href="#d4e323" title="http://www.w3.org/ns/mls#HyperParameterSetting"><span>hyper parameter setting</span></a></li>
+<li><a href="#d4e356" title="http://www.w3.org/ns/mls#Implementation"><span>implementation</span></a></li>
+<li><a href="#d4e400" title="http://www.w3.org/ns/mls#ImplementationCharacteristic"><span>implementation characteristic</span></a></li>
+<li><a href="#d4e418" title="http://www.w3.org/ns/mls#Investigation"><span>investigation</span></a></li>
+<li><a href="#d4e435" title="http://www.w3.org/ns/mls#Model"><span>model</span></a></li>
+<li><a href="#d4e459" title="http://www.w3.org/ns/mls#ModelCharacteristic"><span>model characteristic</span></a></li>
+<li><a href="#d4e472" title="http://www.w3.org/ns/mls#ModelEvaluation"><span>model evaluation</span></a></li>
+<li><a href="#d4e505" title="http://www.w3.org/ns/mls#Process">Process</a></li>
+<li><a href="#d4e514" title="http://www.w3.org/ns/mls#Run"><span>run</span></a></li>
+<li><a href="#d4e578" title="http://www.w3.org/ns/mls#Study"><span>study</span></a></li>
+<li><a href="#d4e601" title="http://www.w3.org/ns/mls#Task"><span>task</span></a></li></ul>
+
+<div id="d4e147" class="entity"><a name="http://www.w3.org/ns/mls#Algorithm"></a><h3>algorithm<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Algorithm</p>
+<div class="comment"><span class="markdown">The algorithm regardless software implementation.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div class="example"><div class="example-title"><span>Example</span></div><pre class="example">
+@prefix : &lt;http://example.org#&gt; .
+@prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+:logisticRegression rdf:type owl:NamedIndividual ,
+                             mls:Algorithm .
+</pre></div>
+
+<div id="d4e160" class="entity"><a name="http://www.w3.org/ns/mls#Data"></a><h3>data<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Data</p><div class="comment"><span class="markdown">Data is a data item composed of data examples and it may be of a various level of granularity and complexity. 
 With regard to granularity, it can be a whole dataset (for instance, one main table and possibly other tables), or only a single table, or only a feature (e.g., a column of a table), or only an instance (e.g., row of a table), or a single feature-value pair. 
-With regard to complexity, data examples are characterized by their datatype, which may be arbitrarily complex (e.g., instead of a table it can be an arbitrary graph).</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#hasQuality">has quality</span><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e183" title="http://www.w3.org/ns/mls#DataCharacteristic">data characteristic</a><sup title="class" class="type-c">c</sup></dd><dt>has sub-classes</dt><dd><a href="#d4e197" title="http://www.w3.org/ns/mls#Dataset">dataset</a><sup title="class" class="type-c">c</sup>, <a href="#d4e295" title="http://www.w3.org/ns/mls#Feature">feature</a><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e183" class="entity"><a name="http://www.w3.org/ns/mls#DataCharacteristic"></a><h3>data characteristic<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#DataCharacteristic</p><div class="comment"><span class="markdown">DataCharacteristic is a distinguishing quality or property that distinguish one data from another.
-Such characteristics are often statistical ones (e.g., the number of instances
-or the number of features of a data set). They may be also informationtheoretic measures (e.g., class entropy of a categorical data set) or geometric measures of data complexity (e.g., the highest discriminatory power of any single feature in the data set).</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dt>has sub-classes</dt><dd><a href="#d4e204" title="http://www.w3.org/ns/mls#DatasetCharacteristic">dataset characteristic</a><sup title="class" class="type-c">c</sup>, <a href="#d4e302" title="http://www.w3.org/ns/mls#FeatureCharacteristic">feature characteristic</a><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e197" class="entity"><a name="http://www.w3.org/ns/mls#Dataset"></a><h3>dataset<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Dataset</p><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e160" title="http://www.w3.org/ns/mls#Data">data</a><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e204" class="entity"><a name="http://www.w3.org/ns/mls#DatasetCharacteristic"></a><h3>dataset characteristic<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#DatasetCharacteristic</p><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e183" title="http://www.w3.org/ns/mls#DataCharacteristic">data characteristic</a><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e211" class="entity"><a name="http://www.w3.org/ns/mls#EvaluationMeasure"></a><h3>evaluation measure<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#EvaluationMeasure</p><div class="comment"><span class="markdown">EvaluationMeasure is a measure to assess the performance of the model generated by the process that realizes the task. Examples are predictive accuracy or f-measure.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e225" class="entity"><a name="http://www.w3.org/ns/mls#EvaluationProcedure"></a><h3>evaluation procedure<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#EvaluationProcedure</p><div class="comment"><span class="markdown">EvaluationProcedure is a technique to evaluate machine learning models. Examples are cross-validation and leave-one-out.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e238" class="entity"><a name="http://www.w3.org/ns/mls#EvaluationSpecification"></a><h3>evaluation specification<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#EvaluationSpecification</p><div class="comment"><span class="markdown">EvaluationProcedure is a technique to evaluate machine learning models. Examples are cross-validation and leave-one-out.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e106" title="http://www.w3.org/ns/mls#hasPart">hasPart</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e225" title="http://www.w3.org/ns/mls#EvaluationProcedure">evaluation procedure</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e106" title="http://www.w3.org/ns/mls#hasPart">hasPart</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e211" title="http://www.w3.org/ns/mls#EvaluationMeasure">evaluation measure</a><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e271" class="entity"><a name="http://www.w3.org/ns/mls#Experiment"></a><h3>experiment<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Experiment</p><div class="comment"><span class="markdown">Experiment is a collection of runs.</span></div><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e505" title="http://www.w3.org/ns/mls#Process">Process</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e106" title="http://www.w3.org/ns/mls#hasPart">hasPart</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e514" title="http://www.w3.org/ns/mls#Run">run</a><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e295" class="entity"><a name="http://www.w3.org/ns/mls#Feature"></a><h3>feature<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Feature</p><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e160" title="http://www.w3.org/ns/mls#Data">data</a><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e302" class="entity"><a name="http://www.w3.org/ns/mls#FeatureCharacteristic"></a><h3>feature characteristic<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#FeatureCharacteristic</p><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e183" title="http://www.w3.org/ns/mls#DataCharacteristic">data characteristic</a><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e309" class="entity"><a name="http://www.w3.org/ns/mls#HyperParameter"></a><h3>hyper parameter<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#HyperParameter</p><div class="comment"><span class="markdown">Hyperparameter is a prior parameter of an implementation, i.e., a parameter which is set before its execution (e.g. C, the complexity parameter, in weka.SMO).</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e323" class="entity"><a name="http://www.w3.org/ns/mls#HyperParameterSetting"></a><h3>hyper parameter setting<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#HyperParameterSetting</p><div class="comment"><span class="markdown">HyperParameterSetting is an entity which connects a hyperparameter and its value that is being set before an implementation execution.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#specifiedBy">specified by</span><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e309" title="http://www.w3.org/ns/mls#HyperParameter">hyper parameter</a><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#hasValue">has value</span><sup title="data property" class="type-dp">dp</sup> <span class="logic">some</span> <span class="dotted" title="http://www.w3.org/2000/01/rdf-schema#Literal">literal</span></dd></dl></div><div id="d4e356" class="entity"><a name="http://www.w3.org/ns/mls#Implementation"></a><h3>implementation<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Implementation</p><div class="comment"><span class="markdown">Implementation is an executable implementation of a machine learning algorithm, a script, or a workflow. It is versioned, and sometimes belongs to a library (e.g. WEKA).</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e81" title="http://www.w3.org/ns/mls#hasHyperParameter">hasHyperParameter</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e309" title="http://www.w3.org/ns/mls#HyperParameter">hyper parameter</a><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#hasQuality">has quality</span><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e400" title="http://www.w3.org/ns/mls#ImplementationCharacteristic">implementation characteristic</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e118" title="http://www.w3.org/ns/mls#implements">implements</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e147" title="http://www.w3.org/ns/mls#Algorithm">algorithm</a><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e400" class="entity"><a name="http://www.w3.org/ns/mls#ImplementationCharacteristic"></a><h3>implementation characteristic<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#ImplementationCharacteristic</p><div class="comment"><span class="markdown">ImplementationCharacteristic is a distinguishing quality or property that distinguish one implementation from another.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e418" class="entity"><a name="http://www.w3.org/ns/mls#Investigation"></a><h3>investigation<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Investigation</p><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e505" title="http://www.w3.org/ns/mls#Process">Process</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e106" title="http://www.w3.org/ns/mls#hasPart">hasPart</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e578" title="http://www.w3.org/ns/mls#Study">study</a><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e435" class="entity"><a name="http://www.w3.org/ns/mls#Model"></a><h3>model<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Model</p><div class="comment"><span class="markdown">Model is a generalization of a set of training data able to predict values for unseen instances. It is an output from an execution of a data mining algorithm implementation. Models have a dual nature. They can be treated as data structures and as such represented, stored and manipulated. On the other hand, they act as functions and are executed, taking as input data examples and giving as output the result of applying the function to a data example. Models can also be divided into global or local ones. A global model has global coverage of a data set, i.e., it generalizes the whole data set. A local model, such as a pattern set, is a set of local hypotheses, i.e. each applies to a limited region of the data set.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#hasQuality">has quality</span><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e459" title="http://www.w3.org/ns/mls#ModelCharacteristic">model characteristic</a><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e459" class="entity"><a name="http://www.w3.org/ns/mls#ModelCharacteristic"></a><h3>model characteristic<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#ModelCharacteristic</p><div class="comment"><span class="markdown">ModelCharacteristic is a distinguishing quality or property that distinguish one model from another. An example model characetristic may be interpretabilty or a complexity of the model.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e472" class="entity"><a name="http://www.w3.org/ns/mls#ModelEvaluation"></a><h3>model evaluation<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#ModelEvaluation</p><div class="comment"><span class="markdown">ModelEvaluation is a setting of a value of the performance measure  specified by the evaluation specification. It connects a measure specification with its value.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#hasValue">has value</span><sup title="data property" class="type-dp">dp</sup> <span class="logic">some</span> <span class="dotted" title="http://www.w3.org/2000/01/rdf-schema#Literal">literal</span></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#specifiedBy">specified by</span><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e211" title="http://www.w3.org/ns/mls#EvaluationMeasure">evaluation measure</a><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e505" class="entity"><a name="http://www.w3.org/ns/mls#Process"></a><h3>Process<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Process</p><dl class="description"><dt>has sub-classes</dt><dd><a href="#d4e271" title="http://www.w3.org/ns/mls#Experiment">experiment</a><sup title="class" class="type-c">c</sup>, <a href="#d4e418" title="http://www.w3.org/ns/mls#Investigation">investigation</a><sup title="class" class="type-c">c</sup>, <a href="#d4e514" title="http://www.w3.org/ns/mls#Run">run</a><sup title="class" class="type-c">c</sup>, <a href="#d4e578" title="http://www.w3.org/ns/mls#Study">study</a><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e514" class="entity"><a name="http://www.w3.org/ns/mls#Run"></a><h3>run<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Run</p><div class="comment"><span class="markdown">Run is an execution of an implementation on a machine (computer). It is limited in time (has a start and end point), can be successful or failed.</span></div><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e505" title="http://www.w3.org/ns/mls#Process">Process</a><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#hasOutput">has output</span><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e435" title="http://www.w3.org/ns/mls#Model">model</a><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#hasOutput">has output</span><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e472" title="http://www.w3.org/ns/mls#ModelEvaluation">model evaluation</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e91" title="http://www.w3.org/ns/mls#hasInput">hasInput</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e160" title="http://www.w3.org/ns/mls#Data">data</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e127" title="http://www.w3.org/ns/mls#realizes">realizes</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e601" title="http://www.w3.org/ns/mls#Task">task</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e73" title="http://www.w3.org/ns/mls#executes">executes</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e356" title="http://www.w3.org/ns/mls#Implementation">implementation</a><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e578" class="entity"><a name="http://www.w3.org/ns/mls#Study"></a><h3>study<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Study</p><div class="comment"><span class="markdown">Study is a collection of runs that belong together to do some kind of analysis on its results. This analysis can be general or very specific (e.g. a hypothesis test). Can be linked to files, data, that belong to it.</span></div><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e505" title="http://www.w3.org/ns/mls#Process">Process</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e106" title="http://www.w3.org/ns/mls#hasPart">hasPart</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e271" title="http://www.w3.org/ns/mls#Experiment">experiment</a><sup title="class" class="type-c">c</sup></dd></dl></div><div id="d4e601" class="entity"><a name="http://www.w3.org/ns/mls#Task"></a><h3>task<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Task</p><div class="comment"><span class="markdown">Task is a formal description of a process that needs to be completed (e.g. based on inputs and outputs). A Task is any piece of work that needs to be addressed in the data mining process. In ML Schema, it is defined based on data and on the evaluation specification.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e63" title="http://www.w3.org/ns/mls#definedOn">definedOn</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e160" title="http://www.w3.org/ns/mls#Data">data</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e63" title="http://www.w3.org/ns/mls#definedOn">definedOn</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e238" title="http://www.w3.org/ns/mls#EvaluationSpecification">evaluation specification</a><sup title="class" class="type-c">c</sup></dd></dl></div></div><div id="objectproperties"><h2>Object Properties</h2><ul class="hlist"><li><a href="#d4e63" title="http://www.w3.org/ns/mls#definedOn">definedOn</a></li><li><a href="#d4e73" title="http://www.w3.org/ns/mls#executes"><span>executes</span></a></li><li><a href="#d4e81" title="http://www.w3.org/ns/mls#hasHyperParameter">hasHyperParameter</a></li><li><a href="#d4e91" title="http://www.w3.org/ns/mls#hasInput">hasInput</a></li><li><a href="#d4e106" title="http://www.w3.org/ns/mls#hasPart">hasPart</a></li><li><a href="#d4e118" title="http://www.w3.org/ns/mls#implements">implements</a></li><li><a href="#d4e127" title="http://www.w3.org/ns/mls#realizes"><span>realizes</span></a></li></ul><div id="d4e63" class="entity"><a name="http://www.w3.org/ns/mls#definedOn"></a><h3>definedOn<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#definedOn</p><div class="description"><dl><dt>has super-properties</dt><dd><span class="dotted" title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</span></dd></dl></div></div><div id="d4e73" class="entity"><a name="http://www.w3.org/ns/mls#executes"></a><h3>executes<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#executes</p><div class="description"><dl><dt>has super-properties</dt><dd><span class="dotted" title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</span></dd></dl></div></div><div id="d4e81" class="entity"><a name="http://www.w3.org/ns/mls#hasHyperParameter"></a><h3>hasHyperParameter<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#hasHyperParameter</p><div class="description"><dl><dt>has super-properties</dt><dd><span class="dotted" title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</span></dd></dl></div></div><div id="d4e91" class="entity"><a name="http://www.w3.org/ns/mls#hasInput"></a><h3>hasInput<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#hasInput</p><div class="description"><dl><dt>has super-properties</dt><dd><span class="dotted" title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</span></dd></dl></div></div><div id="d4e106" class="entity"><a name="http://www.w3.org/ns/mls#hasPart"></a><h3>hasPart<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#hasPart</p></div><div id="d4e118" class="entity"><a name="http://www.w3.org/ns/mls#implements"></a><h3>implements<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#implements</p></div><div id="d4e127" class="entity"><a name="http://www.w3.org/ns/mls#realizes"></a><h3>realizes<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#realizes</p><div class="description"><dl><dt>has super-properties</dt><dd><span class="dotted" title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</span></dd></dl></div></div></div><div id="annotationproperties"><h2>Annotation Properties</h2><ul class="hlist"><li><a href="#d4e24" title="http://purl.org/dc/terms/description"><span>description</span></a></li><li><a href="#d4e29" title="http://purl.org/dc/terms/hasVersion"><span>has version</span></a></li><li><a href="#d4e33" title="http://purl.org/dc/terms/issued"><span>issued</span></a></li><li><a href="#d4e37" title="http://purl.org/dc/terms/modified"><span>modified</span></a></li><li><a href="#d4e50" title="http://www.w3.org/2004/02/skos/core#note"><span>note</span></a></li><li><a href="#d4e42" title="http://purl.org/dc/terms/publisher"><span>publisher</span></a></li><li><a href="#d4e46" title="http://purl.org/dc/terms/title"><span>title</span></a></li></ul><div id="d4e24" class="entity"><a name="http://purl.org/dc/terms/description"></a><h3>description<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://purl.org/dc/terms/description</p></div><div id="d4e29" class="entity"><a name="http://purl.org/dc/terms/hasVersion"></a><h3>has version<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://purl.org/dc/terms/hasVersion</p></div><div id="d4e33" class="entity"><a name="http://purl.org/dc/terms/issued"></a><h3>issued<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://purl.org/dc/terms/issued</p></div><div id="d4e37" class="entity"><a name="http://purl.org/dc/terms/modified"></a><h3>modified<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://purl.org/dc/terms/modified</p></div><div id="d4e50" class="entity"><a name="http://www.w3.org/2004/02/skos/core#note"></a><h3>note<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#note</p></div><div id="d4e42" class="entity"><a name="http://purl.org/dc/terms/publisher"></a><h3>publisher<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://purl.org/dc/terms/publisher</p></div><div id="d4e46" class="entity"><a name="http://purl.org/dc/terms/title"></a><h3>title<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://purl.org/dc/terms/title</p></div></div><div id="namespacedeclarations"><h2>Namespace Declarations <span class="backlink"> back to <a href="#toc">ToC</a></span></h2><dl><dt><em>default namespace</em></dt><dd>http://www.w3.org/ns/mls#</dd><dt>1-1</dt><dd>http://purl.org/dc/elements/1.1/</dd><dt>aboutdcmi</dt><dd>http://purl.org/dc/aboutdcmi#</dd><dt>owl</dt><dd>http://www.w3.org/2002/07/owl#</dd><dt>protege</dt><dd>http://protege.stanford.edu/plugins/owl/protege#</dd><dt>rdf</dt><dd>http://www.w3.org/1999/02/22-rdf-syntax-ns#</dd><dt>rdfs</dt><dd>http://www.w3.org/2000/01/rdf-schema#</dd><dt>rfc</dt><dd>http://www.ietf.org/rfc/</dd><dt>skos</dt><dd>http://www.w3.org/2004/02/skos/core#</dd><dt>terms</dt><dd>http://purl.org/dc/terms/</dd><dt>xsd</dt><dd>http://www.w3.org/2001/XMLSchema#</dd></dl></div><p class="endnote">This HTML document was obtained by processing the OWL ontology source code through <a href="http://www.essepuntato.it/lode">LODE</a>, <em>Live OWL Documentation Environment</em>, developed by <a href="http://www.essepuntato.it">Silvio Peroni</a>.</p></body>
+With regard to complexity, data examples are characterized by their datatype, which may be arbitrarily complex (e.g., instead of a table it can be an arbitrary graph).</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#hasQuality">has quality</span><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e183" title="http://www.w3.org/ns/mls#DataCharacteristic">data characteristic</a><sup title="class" class="type-c">c</sup></dd><dt>has sub-classes</dt><dd><a href="#d4e197" title="http://www.w3.org/ns/mls#Dataset">dataset</a><sup title="class" class="type-c">c</sup>, <a href="#d4e295" title="http://www.w3.org/ns/mls#Feature">feature</a><sup title="class" class="type-c">c</sup></dd></dl></div>
+
+<div id="d4e183" class="entity"><a name="http://www.w3.org/ns/mls#DataCharacteristic"></a><h3>data characteristic<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#DataCharacteristic</p>
+<div class="comment"><span class="markdown">DataCharacteristic is a distinguishing quality or property that distinguish one data from another.
+Such characteristics are often statistical ones (e.g., the number of instances or the number of features of a data set). They may be also informationtheoretic measures (e.g., class entropy of a categorical data set) or geometric measures of data complexity (e.g., the highest discriminatory power of any single feature in the data set).</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dt>has sub-classes</dt><dd><a href="#d4e204" title="http://www.w3.org/ns/mls#DatasetCharacteristic">dataset characteristic</a><sup title="class" class="type-c">c</sup>, <a href="#d4e302" title="http://www.w3.org/ns/mls#FeatureCharacteristic">feature characteristic</a><sup title="class" class="type-c">c</sup></dd></dl></div>
+
+
+<div id="d4e197" class="entity"><a name="http://www.w3.org/ns/mls#Dataset"></a><h3>dataset<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Dataset</p><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e160" title="http://www.w3.org/ns/mls#Data">data</a><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div class="example"><div class="example-title"><span>Example</span></div><pre class="example">
+@prefix : &lt;http://example.org#&gt; .
+@prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+
+:credit-a rdf:type owl:NamedIndividual ,
+                   mls:Dataset ;
+          
+          mls:hasQuality :classEntropy ,
+                         :decisionStumpAUC ,
+                         :defaultAccuracy ,
+                         :j48_001_Stump ,
+                         :numberOfClasses ,
+                         :numberOfFeatures ,
+                         :numberOfInstances ,
+                         :numberOfMissingValues .
+
+</pre></div>
+
+
+<div id="d4e204" class="entity"><a name="http://www.w3.org/ns/mls#DatasetCharacteristic"></a><h3>dataset characteristic<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#DatasetCharacteristic</p><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e183" title="http://www.w3.org/ns/mls#DataCharacteristic">data characteristic</a><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div class="example"><div class="example-title"><span>Example</span></div><pre class="example">
+@prefix : &lt;http://example.org#&gt; .
+@prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+
+:numberOfClasses rdf:type owl:NamedIndividual ,
+                          mls:DatasetCharacteristic .
+
+:numberOfFeatures rdf:type owl:NamedIndividual ,
+                           mls:DatasetCharacteristic .
+
+:numberOfInstances rdf:type owl:NamedIndividual ,
+                            mls:DatasetCharacteristic .
+
+:numberOfMissingValues rdf:type owl:NamedIndividual ,
+                                mls:DatasetCharacteristic .
+
+:classEntropy rdf:type owl:NamedIndividual ,
+                       mls:DatasetCharacteristic .
+                       
+:decisionStumpAUC rdf:type owl:NamedIndividual ,
+                       mls:DatasetCharacteristic .
+                      
+:j48_001_Stump rdf:type owl:NamedIndividual ,
+                       mls:DatasetCharacteristic .
+
+:defaultAccuracy rdf:type owl:NamedIndividual ,
+                       mls:DatasetCharacteristic .
+
+
+</pre></div>
+
+<div id="d4e211" class="entity"><a name="http://www.w3.org/ns/mls#EvaluationMeasure"></a><h3>evaluation measure<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#EvaluationMeasure</p>
+<div class="comment"><span class="markdown">EvaluationMeasure is a measure to assess the performance of the model generated by the process that realizes the task. Examples are predictive accuracy or f-measure.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div id="d4e225" class="entity"><a name="http://www.w3.org/ns/mls#EvaluationProcedure"></a><h3>evaluation procedure<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#EvaluationProcedure</p><div class="comment"><span class="markdown">EvaluationProcedure is a technique to evaluate machine learning models. Examples are cross-validation and leave-one-out.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div class="example"><div class="example-title"><span>Example</span></div><pre class="example">
+@prefix : &lt;http://example.org#&gt; .
+@prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+
+:TenFoldCrossValidation rdf:type owl:NamedIndividual ,
+                                 mls:EvaluationProcedure .
+</pre></div>
+
+                                 
+<div id="d4e238" class="entity"><a name="http://www.w3.org/ns/mls#EvaluationSpecification"></a><h3>evaluation specification<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#EvaluationSpecification</p><div class="comment"><span class="markdown">EvaluationProcedure is a technique to evaluate machine learning models. Examples are cross-validation and leave-one-out.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e106" title="http://www.w3.org/ns/mls#hasPart">hasPart</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e225" title="http://www.w3.org/ns/mls#EvaluationProcedure">evaluation procedure</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e106" title="http://www.w3.org/ns/mls#hasPart">hasPart</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e211" title="http://www.w3.org/ns/mls#EvaluationMeasure">evaluation measure</a><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div class="example"><div class="example-title"><span>Example</span></div><pre class="example">
+@prefix : &lt;http://example.org#&gt; .
+@prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+
+:evaluationSpecification1 rdf:type owl:NamedIndividual ,
+                                   mls:EvaluationSpecification ;
+                          
+                          mls:hasPart :TenFoldCrossValidation ,
+                                      :predictiveAccuracy .
+
+</pre></div>
+
+
+<div id="d4e271" class="entity"><a name="http://www.w3.org/ns/mls#Experiment"></a><h3>experiment<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Experiment</p><div class="comment"><span class="markdown">Experiment is a collection of runs.</span></div><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e505" title="http://www.w3.org/ns/mls#Process">Process</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e106" title="http://www.w3.org/ns/mls#hasPart">hasPart</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e514" title="http://www.w3.org/ns/mls#Run">run</a><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div id="d4e295" class="entity"><a name="http://www.w3.org/ns/mls#Feature"></a><h3>feature<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Feature</p><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e160" title="http://www.w3.org/ns/mls#Data">data</a><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div id="d4e302" class="entity"><a name="http://www.w3.org/ns/mls#FeatureCharacteristic"></a><h3>feature characteristic<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#FeatureCharacteristic</p><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e183" title="http://www.w3.org/ns/mls#DataCharacteristic">data characteristic</a><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div id="d4e309" class="entity"><a name="http://www.w3.org/ns/mls#HyperParameter"></a><h3>hyper parameter<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#HyperParameter</p><div class="comment"><span class="markdown">Hyperparameter is a prior parameter of an implementation, i.e., a parameter which is set before its execution (e.g. C, the complexity parameter, in weka.SMO).</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div class="example"><div class="example-title"><span>Example</span></div><pre class="example">
+@prefix : &lt;http://example.org#&gt; .
+@prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+
+:wekaLogisticC rdf:type owl:NamedIndividual ,
+                        mls:HyperParameter .
+
+:wekaLogisticDoNotCheckCapabilities rdf:type owl:NamedIndividual ,
+                                             mls:HyperParameter .
+
+:wekaLogisticM rdf:type owl:NamedIndividual ,
+                        mls:HyperParameter .
+
+:wekaLogisticOutputDebugInfo rdf:type owl:NamedIndividual ,
+                                      mls:HyperParameter .
+                                      
+:wekaLogisticR rdf:type owl:NamedIndividual ,
+                        mls:HyperParameter .
+
+</pre></div>
+
+
+<div id="d4e323" class="entity"><a name="http://www.w3.org/ns/mls#HyperParameterSetting"></a><h3>hyper parameter setting<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#HyperParameterSetting</p><div class="comment"><span class="markdown">HyperParameterSetting is an entity which connects a hyperparameter and its value that is being set before an implementation execution.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#specifiedBy">specified by</span><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e309" title="http://www.w3.org/ns/mls#HyperParameter">hyper parameter</a><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#hasValue">has value</span><sup title="data property" class="type-dp">dp</sup> <span class="logic">some</span> <span class="dotted" title="http://www.w3.org/2000/01/rdf-schema#Literal">literal</span></dd></dl></div>
+<div class="example"><div class="example-title"><span>Example</span></div><pre class="example">
+@prefix : &lt;http://example.org#&gt; .
+@prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+
+:wekaLogisticMSetting29 rdf:type owl:NamedIndividual ,
+                                 mls:HyperParameterSetting ;
+                        
+                        mls:specifiedBy :wekaLogisticM ;
+                        
+                        mls:hasValue -1 .
+                        
+:wekaLogisticRSetting29 rdf:type owl:NamedIndividual ,
+                                 mls:HyperParameterSetting ;
+                        
+                        mls:specifiedBy :wekaLogisticR ;
+                        
+                        mls:hasValue "1.0E-8"^^xsd:float .
+
+</pre></div>
+
+
+<div id="d4e356" class="entity"><a name="http://www.w3.org/ns/mls#Implementation"></a><h3>implementation<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Implementation</p><div class="comment"><span class="markdown">Implementation is an executable implementation of a machine learning algorithm, a script, or a workflow. It is versioned, and sometimes belongs to a library (e.g. WEKA).</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e81" title="http://www.w3.org/ns/mls#hasHyperParameter">hasHyperParameter</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e309" title="http://www.w3.org/ns/mls#HyperParameter">hyper parameter</a><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#hasQuality">has quality</span><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e400" title="http://www.w3.org/ns/mls#ImplementationCharacteristic">implementation characteristic</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e118" title="http://www.w3.org/ns/mls#implements">implements</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e147" title="http://www.w3.org/ns/mls#Algorithm">algorithm</a><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div class="example"><div class="example-title"><span>Example</span></div><pre class="example">
+@prefix : &lt;http://example.org#&gt; .
+@prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+
+:wekaLogistic rdf:type owl:NamedIndividual ,
+                       mls:Implementation ;
+              
+              mls:hasHyperParameter :wekaLogisticC ,
+                                    :wekaLogisticDoNotCheckCapabilities ,
+                                    :wekaLogisticM ,
+                                    :wekaLogisticOutputDebugInfo ,
+                                    :wekaLogisticR ;
+              
+              mls:implements :logisticRegression .
+
+</pre></div>
+
+
+<div id="d4e400" class="entity"><a name="http://www.w3.org/ns/mls#ImplementationCharacteristic"></a><h3>implementation characteristic<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#ImplementationCharacteristic</p><div class="comment"><span class="markdown">ImplementationCharacteristic is a distinguishing quality or property that distinguish one implementation from another.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div id="d4e418" class="entity"><a name="http://www.w3.org/ns/mls#Investigation"></a><h3>investigation<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Investigation</p><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e505" title="http://www.w3.org/ns/mls#Process">Process</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e106" title="http://www.w3.org/ns/mls#hasPart">hasPart</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e578" title="http://www.w3.org/ns/mls#Study">study</a><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div id="d4e435" class="entity"><a name="http://www.w3.org/ns/mls#Model"></a><h3>model<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Model</p><div class="comment"><span class="markdown">Model is a generalization of a set of training data able to predict values for unseen instances. It is an output from an execution of a data mining algorithm implementation. Models have a dual nature. They can be treated as data structures and as such represented, stored and manipulated. On the other hand, they act as functions and are executed, taking as input data examples and giving as output the result of applying the function to a data example. Models can also be divided into global or local ones. A global model has global coverage of a data set, i.e., it generalizes the whole data set. A local model, such as a pattern set, is a set of local hypotheses, i.e. each applies to a limited region of the data set.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#hasQuality">has quality</span><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e459" title="http://www.w3.org/ns/mls#ModelCharacteristic">model characteristic</a><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div class="example"><div class="example-title"><span>Example</span></div><pre class="example">
+@prefix : &lt;http://example.org#&gt; .
+@prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+
+:wekaLogisticModel100241 rdf:type owl:NamedIndividual ,
+                                  mls:Model .
+
+</pre></div>
+
+
+<div id="d4e459" class="entity"><a name="http://www.w3.org/ns/mls#ModelCharacteristic"></a><h3>model characteristic<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#ModelCharacteristic</p><div class="comment"><span class="markdown">ModelCharacteristic is a distinguishing quality or property that distinguish one model from another. An example model characetristic may be interpretabilty or a complexity of the model.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div id="d4e472" class="entity"><a name="http://www.w3.org/ns/mls#ModelEvaluation"></a><h3>model evaluation<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#ModelEvaluation</p><div class="comment"><span class="markdown">ModelEvaluation is a setting of a value of the performance measure  specified by the evaluation specification. It connects a measure specification with its value.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#hasValue">has value</span><sup title="data property" class="type-dp">dp</sup> <span class="logic">some</span> <span class="dotted" title="http://www.w3.org/2000/01/rdf-schema#Literal">literal</span></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#specifiedBy">specified by</span><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e211" title="http://www.w3.org/ns/mls#EvaluationMeasure">evaluation measure</a><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div class="example"><div class="example-title"><span>Example</span></div><pre class="example">
+@prefix : &lt;http://example.org#&gt; .
+@prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+
+:modelEvaluation100241 rdf:type owl:NamedIndividual ,
+                                mls:ModelEvaluation ;
+                       
+                       mls:specifiedBy :predictiveAccuracy ;
+                       
+                       mls:hasValue 0.8478 .
+</pre></div>
+
+
+<div id="d4e505" class="entity"><a name="http://www.w3.org/ns/mls#Process"></a><h3>Process<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Process</p><dl class="description"><dt>has sub-classes</dt><dd><a href="#d4e271" title="http://www.w3.org/ns/mls#Experiment">experiment</a><sup title="class" class="type-c">c</sup>, <a href="#d4e418" title="http://www.w3.org/ns/mls#Investigation">investigation</a><sup title="class" class="type-c">c</sup>, <a href="#d4e514" title="http://www.w3.org/ns/mls#Run">run</a><sup title="class" class="type-c">c</sup>, <a href="#d4e578" title="http://www.w3.org/ns/mls#Study">study</a><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div id="d4e514" class="entity"><a name="http://www.w3.org/ns/mls#Run"></a><h3>run<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Run</p><div class="comment"><span class="markdown">Run is an execution of an implementation on a machine (computer). It is limited in time (has a start and end point), can be successful or failed.</span></div><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e505" title="http://www.w3.org/ns/mls#Process">Process</a><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#hasOutput">has output</span><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e435" title="http://www.w3.org/ns/mls#Model">model</a><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#hasOutput">has output</span><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e472" title="http://www.w3.org/ns/mls#ModelEvaluation">model evaluation</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e91" title="http://www.w3.org/ns/mls#hasInput">hasInput</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e160" title="http://www.w3.org/ns/mls#Data">data</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e127" title="http://www.w3.org/ns/mls#realizes">realizes</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e601" title="http://www.w3.org/ns/mls#Task">task</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e73" title="http://www.w3.org/ns/mls#executes">executes</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e356" title="http://www.w3.org/ns/mls#Implementation">implementation</a><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div class="example"><div class="example-title"><span>Example</span></div><pre class="example">
+@prefix : &lt;http://example.org#&gt; .
+@prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+
+:run100241 rdf:type owl:NamedIndividual ,
+                    mls:Run .
+
+</pre></div>
+
+
+<div id="d4e578" class="entity"><a name="http://www.w3.org/ns/mls#Study"></a><h3>study<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Study</p><div class="comment"><span class="markdown">Study is a collection of runs that belong together to do some kind of analysis on its results. This analysis can be general or very specific (e.g. a hypothesis test). Can be linked to files, data, that belong to it.</span></div><dl class="description"><dt>has super-classes</dt><dd><a href="#d4e505" title="http://www.w3.org/ns/mls#Process">Process</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e106" title="http://www.w3.org/ns/mls#hasPart">hasPart</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e271" title="http://www.w3.org/ns/mls#Experiment">experiment</a><sup title="class" class="type-c">c</sup></dd></dl></div>
+<div id="d4e601" class="entity"><a name="http://www.w3.org/ns/mls#Task"></a><h3>task<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Task</p><div class="comment"><span class="markdown">Task is a formal description of a process that needs to be completed (e.g. based on inputs and outputs). A Task is any piece of work that needs to be addressed in the data mining process. In ML Schema, it is defined based on data and on the evaluation specification.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e63" title="http://www.w3.org/ns/mls#definedOn">definedOn</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e160" title="http://www.w3.org/ns/mls#Data">data</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e63" title="http://www.w3.org/ns/mls#definedOn">definedOn</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e238" title="http://www.w3.org/ns/mls#EvaluationSpecification">evaluation specification</a><sup title="class" class="type-c">c</sup></dd></dl></div></div><div id="objectproperties"><h2>Object Properties</h2><ul class="hlist"><li><a href="#d4e63" title="http://www.w3.org/ns/mls#definedOn">definedOn</a></li><li><a href="#d4e73" title="http://www.w3.org/ns/mls#executes"><span>executes</span></a></li><li><a href="#d4e81" title="http://www.w3.org/ns/mls#hasHyperParameter">hasHyperParameter</a></li><li><a href="#d4e91" title="http://www.w3.org/ns/mls#hasInput">hasInput</a></li><li><a href="#d4e106" title="http://www.w3.org/ns/mls#hasPart">hasPart</a></li><li><a href="#d4e118" title="http://www.w3.org/ns/mls#implements">implements</a></li><li><a href="#d4e127" title="http://www.w3.org/ns/mls#realizes"><span>realizes</span></a></li></ul>
+<div class="example"><div class="example-title"><span>Example</span></div><pre class="example">
+@prefix : &lt;http://example.org#&gt; .
+@prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+
+:task29 rdf:type owl:NamedIndividual ,
+                 mls:Task ;
+        
+        mls:definedOn :credit-a ,
+                      :evaluationSpecification1 .
+
+</pre></div>
+
+
+<div id="d4e63" class="entity"><a name="http://www.w3.org/ns/mls#definedOn"></a><h3>definedOn<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#definedOn</p><div class="description"><dl><dt>has super-properties</dt><dd><span class="dotted" title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</span></dd></dl></div></div>
+<div id="d4e73" class="entity"><a name="http://www.w3.org/ns/mls#executes"></a><h3>executes<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#executes</p><div class="description"><dl><dt>has super-properties</dt><dd><span class="dotted" title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</span></dd></dl></div></div>
+<div id="d4e81" class="entity"><a name="http://www.w3.org/ns/mls#hasHyperParameter"></a><h3>hasHyperParameter<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#hasHyperParameter</p><div class="description"><dl><dt>has super-properties</dt><dd><span class="dotted" title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</span></dd></dl></div></div>
+<div id="d4e91" class="entity"><a name="http://www.w3.org/ns/mls#hasInput"></a><h3>hasInput<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#hasInput</p><div class="description"><dl><dt>has super-properties</dt><dd><span class="dotted" title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</span></dd></dl></div></div>
+<div id="d4e106" class="entity"><a name="http://www.w3.org/ns/mls#hasPart"></a><h3>hasPart<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#hasPart</p></div>
+<div id="d4e118" class="entity"><a name="http://www.w3.org/ns/mls#implements"></a><h3>implements<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#implements</p></div>
+<div id="d4e127" class="entity"><a name="http://www.w3.org/ns/mls#realizes"></a><h3>realizes<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#realizes</p><div class="description"><dl><dt>has super-properties</dt><dd><span class="dotted" title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</span></dd></dl></div></div></div><div id="annotationproperties"><h2>Annotation Properties</h2><ul class="hlist"><li><a href="#d4e24" title="http://purl.org/dc/terms/description"><span>description</span></a></li><li><a href="#d4e29" title="http://purl.org/dc/terms/hasVersion"><span>has version</span></a></li><li><a href="#d4e33" title="http://purl.org/dc/terms/issued"><span>issued</span></a></li><li><a href="#d4e37" title="http://purl.org/dc/terms/modified"><span>modified</span></a></li><li><a href="#d4e50" title="http://www.w3.org/2004/02/skos/core#note"><span>note</span></a></li><li><a href="#d4e42" title="http://purl.org/dc/terms/publisher"><span>publisher</span></a></li><li><a href="#d4e46" title="http://purl.org/dc/terms/title"><span>title</span></a></li></ul>
+<div id="d4e24" class="entity"><a name="http://purl.org/dc/terms/description"></a><h3>description<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://purl.org/dc/terms/description</p></div>
+<div id="d4e29" class="entity"><a name="http://purl.org/dc/terms/hasVersion"></a><h3>has version<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://purl.org/dc/terms/hasVersion</p></div>
+<div id="d4e33" class="entity"><a name="http://purl.org/dc/terms/issued"></a><h3>issued<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://purl.org/dc/terms/issued</p></div>
+<div id="d4e37" class="entity"><a name="http://purl.org/dc/terms/modified"></a><h3>modified<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://purl.org/dc/terms/modified</p></div>
+<div id="d4e50" class="entity"><a name="http://www.w3.org/2004/02/skos/core#note"></a><h3>note<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#note</p></div>
+<div id="d4e42" class="entity"><a name="http://purl.org/dc/terms/publisher"></a><h3>publisher<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://purl.org/dc/terms/publisher</p></div>
+<div id="d4e46" class="entity"><a name="http://purl.org/dc/terms/title"></a><h3>title<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://purl.org/dc/terms/title</p></div></div><div id="namespacedeclarations"><h2>Namespace Declarations <span class="backlink"> back to <a href="#toc">ToC</a></span></h2><dl><dt><em>default namespace</em></dt><dd>http://www.w3.org/ns/mls#</dd><dt>1-1</dt><dd>http://purl.org/dc/elements/1.1/</dd><dt>aboutdcmi</dt><dd>http://purl.org/dc/aboutdcmi#</dd><dt>owl</dt><dd>http://www.w3.org/2002/07/owl#</dd><dt>protege</dt><dd>http://protege.stanford.edu/plugins/owl/protege#</dd><dt>rdf</dt><dd>http://www.w3.org/1999/02/22-rdf-syntax-ns#</dd><dt>rdfs</dt><dd>http://www.w3.org/2000/01/rdf-schema#</dd><dt>rfc</dt><dd>http://www.ietf.org/rfc/</dd><dt>skos</dt><dd>http://www.w3.org/2004/02/skos/core#</dd><dt>terms</dt><dd>http://purl.org/dc/terms/</dd><dt>xsd</dt><dd>http://www.w3.org/2001/XMLSchema#</dd></dl></div><p class="endnote">This HTML document was obtained by processing the OWL ontology source code through <a href="http://www.essepuntato.it/lode">LODE</a>, <em>Live OWL Documentation Environment</em>, developed by <a href="http://www.essepuntato.it">Silvio Peroni</a>.</p></body>
 
 <h2><span class="secno">3. </span>Got style?</h2>
 
