@@ -470,6 +470,41 @@ It can be specialized to create new classes and properties. It can be mapped to 
 <p>The core vocabulary of ML Schema deals with learning algorithms. Lorem ipsum. Lorem ipsum.</p>
 </div>
 
+   <div id="notations" class="section">    
+       <h3><span class="secno">1.1 </span>Document outline</h3>  
+
+   </div>
+
+   <div id="notations" class="section">    
+       <h3><span class="secno">1.2 </span>Notational Conventions</h3>  
+
+   </div>
+
+   <div class="informative section" id="namespaces">
+         <h3><span class="secno">1.3 </span>Namespaces</h3><p><em>This section is non-normative.</em></p>
+         <p>The following namespace prefixes are used throughout this document.
+
+         </p><div style="text-align: left;">
+            <table class="thinborder" style="margin-left: auto; margin-right: auto;">
+            <caption id="namespace-table"><a href="#namespace-table">Table 1</a>: Prefix and Namespaces used in this specification</caption> <!-- Table 1-->
+            <tbody><tr><td><a><b>prefix</b></a></td><td><b>namespace IRI</b></td> <td><b>definition</b></td></tr>
+
+            <tr><td><a>rdf</a></td><td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td><td>The RDF namespace [<cite><a class="bibref" rel="biblioentry" href="#bib-RDF-CONCEPTS">RDF-CONCEPTS</a></cite>]</td></tr>
+
+            <tr><td><a>xsd</a></td><td>http://www.w3.org/2000/10/XMLSchema#</td><td>XML Schema Namespace [<cite><a class="bibref" rel="biblioentry" href="#bib-XMLSCHEMA11-2">XMLSCHEMA11-2</a></cite>]</td></tr>
+
+            <tr><td><a>owl</a></td><td>http://www.w3.org/2002/07/owl#</td><td>The OWL namespace [<cite><a class="bibref" rel="biblioentry" href="#bib-OWL2-OVERVIEW">OWL2-OVERVIEW</a></cite>]</td></tr>
+
+            <tr><td><a>mls</a></td><td>http://www.w3.org/ns/mls#</td>
+                <td>The ML Schema namespace XXX</td></tr>
+
+            <tr><td><a>(others)</a></td><td>(various)</td><td>Other namespace prefixes appearing only in examples. <br> 
+            </tbody></table>
+         </div>
+      </div>
+   </div>
+
+
 <div id="overview">
 <h2><span class="secno">2. </span>The ML Schema description</h2>
 </div>
@@ -485,6 +520,150 @@ It can be specialized to create new classes and properties. It can be mapped to 
 </div>
 
 
+The following ML Schema example describes the entities involved to model a single run of the implementation of a logistic regression algorithm from a Weka machine learning environment.
+
+
+<div class="example"><div class="example-title"><span>Example</span></div><pre class="example">
+@prefix : &lt;http://example.org#&gt; .
+@prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+:run100241 rdf:type owl:NamedIndividual ,
+                    mls:Run ;
+           
+           mls:executes :wekaLogistic ;
+           
+           mls:hasInput :credit-a ;
+           
+           mls:hasOutput :modelEvaluation100241 ,
+                         :wekaLogisticModel100241 ;
+           
+           mls:realizes :task29 .
+
+
+:wekaLogistic rdf:type owl:NamedIndividual ,
+                       mls:Implementation ;
+              
+              mls:hasHyperParameter :wekaLogisticC ,
+                                    :wekaLogisticDoNotCheckCapabilities ,
+                                    :wekaLogisticM ,
+                                    :wekaLogisticOutputDebugInfo ,
+                                    :wekaLogisticR ;
+              
+              mls:implements :logisticRegression .
+              
+
+:logisticRegression rdf:type owl:NamedIndividual ,
+                             mls:Algorithm .
+                             
+:wekaLogisticC rdf:type owl:NamedIndividual ,
+                        mls:HyperParameter .
+
+:wekaLogisticDoNotCheckCapabilities rdf:type owl:NamedIndividual ,
+                                             mls:HyperParameter .
+
+:wekaLogisticM rdf:type owl:NamedIndividual ,
+                        mls:HyperParameter .
+
+:wekaLogisticOutputDebugInfo rdf:type owl:NamedIndividual ,
+                                      mls:HyperParameter .
+
+:wekaLogisticR rdf:type owl:NamedIndividual ,
+                        mls:HyperParameter .
+
+:wekaLogisticMSetting29 rdf:type owl:NamedIndividual ,
+                                 mls:HyperParameterSetting ;
+                        
+                        mls:specifiedBy :wekaLogisticM ;
+                        
+                        mls:hasValue -1 .
+
+:wekaLogisticRSetting29 rdf:type owl:NamedIndividual ,
+                                 mls:HyperParameterSetting ;
+                        
+                        mls:specifiedBy :wekaLogisticR ;
+                        
+                        mls:hasValue "1.0E-8"^^xsd:float .
+
+                                                          
+:credit-a rdf:type owl:NamedIndividual ,
+                   mls:Dataset ;
+          
+          mls:hasQuality :decisionStumpAUC ,
+                         :defaultAccuracy ,
+                         :numberOfInstances ,
+                         :numberOfMissingValues .
+                         
+:decisionStumpAUC rdf:type owl:NamedIndividual ,
+                           mls:DatasetCharacteristic .
+                           
+:defaultAccuracy rdf:type owl:NamedIndividual ,
+                          mls:DatasetCharacteristic .
+                           
+:numberOfInstances rdf:type owl:NamedIndividual ,
+                            mls:DatasetCharacteristic .
+
+:numberOfMissingValues rdf:type owl:NamedIndividual ,
+                                mls:DatasetCharacteristic .
+                
+:wekaLogisticModel100241 rdf:type owl:NamedIndividual ,
+                                  mls:Model .
+
+:modelEvaluation100241 rdf:type owl:NamedIndividual ,
+                                mls:ModelEvaluation ;
+                       
+                       mls:specifiedBy :predictiveAccuracy ;
+                       
+                       mls:hasValue 0.8478 .
+
+:predictiveAccuracy rdf:type owl:NamedIndividual ,
+                             mls:EvaluationMeasure . 
+
+:task29 rdf:type owl:NamedIndividual ,
+                 mls:Task ;
+        
+        mls:definedOn :credit-a ,
+                      :evaluationSpecification1 .
+
+
+:evaluationSpecification1 rdf:type owl:NamedIndividual ,
+                                   mls:EvaluationSpecification ;
+                          
+                          mls:hasPart :TenFoldCrossValidation ,
+                                      :predictiveAccuracy .
+
+:TenFoldCrossValidation rdf:type owl:NamedIndividual ,
+                                 mls:EvaluationProcedure .
+</pre></div>
+
+
+<p>
+In the example, the run <code>:run100241</code> executes the implementation <code>:wekaLogistic</code>.
+The run has on input the <code>:credit-a</code> dataset and its output is both the model <code>:wekaLogisticModel100241</code> and the model evaluation <code>:modelEvaluation100241</code>.
+The run realizes the task <code>:task29</code>.
+</p>
+<p>
+The implementation <code>:wekaLogistic</code> implements the algorithm <code>:logisticRegression</code>.
+The implementation has five hyperparameters: <code>:wekaLogisticC</code>, <code>:wekaLogisticDoNotCheckCapabilities</code>, <code>:wekaLogisticM</code>, <code>:wekaLogisticOutputDebugInfo</code>, <code>:wekaLogisticR</code>.
+Two of these hyperparameters are set for the run <code>:run100241</code>. 
+The hyperparameter <code>:wekaLogisticM</code> has value set to <code>-1</code> (expressed via the hyperparameter setting <code>:wekaLogisticMSetting29</code>), and the hyperparameter <code>:wekaLogisticR</code> that has its value set to <code>"1.0E-8"^^xsd:float</code> (expressed via the hyperparameter setting <code>:wekaLogisticRSetting29</code>). 
+</p>
+<p>
+The dataset <code>:credit-a</code> has several characteristics such as: <code>:decisionStumpAUC</code>, <code>:defaultAccuracy</code>, <code>:numberOfInstances</code>, <code>:numberOfMissingValues</code>.
+</p>
+<p>
+The predictive model <code>:wekaLogisticModel100241</code> is evaluated (<code>:modelEvaluation100241</code>) based on the specified evaluation measure <code>:predictiveAccuracy</code>.
+The value of the evaluation measure modeled via the model evaluation <code>:modelEvaluation100241</code> is <code>0.8478</code>.
+</p>
+<p>
+The task <code>:task29</code> is defined on the dataset (<code>credit-a</code>) and on the evaluation specification <code>:evaluationSpecification1</code>.
+The evaluation specification <code>:evaluationSpecification1</code> has parts: the evaluation procedure <code>:TenFoldCrossValidation</code> and the evaluation measure<code>:predictiveAccuracy</code>.
+</p>                        
+<br>
+TODO: Include an example of an experiment and a study. 
+</br>
 
 <hr /><div id="classes"><h2>Classes</h2><ul class="hlist">
 <li><a href="#d4e147" title="http://www.w3.org/ns/mls#Algorithm"><span>algorithm</span></a></li>
@@ -543,12 +722,8 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 :credit-a rdf:type owl:NamedIndividual ,
                    mls:Dataset ;
           
-          mls:hasQuality :classEntropy ,
-                         :decisionStumpAUC ,
+          mls:hasQuality :decisionStumpAUC ,
                          :defaultAccuracy ,
-                         :j48_001_Stump ,
-                         :numberOfClasses ,
-                         :numberOfFeatures ,
                          :numberOfInstances ,
                          :numberOfMissingValues .
 
@@ -563,27 +738,15 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 
 
-:numberOfClasses rdf:type owl:NamedIndividual ,
-                          mls:DatasetCharacteristic .
-
-:numberOfFeatures rdf:type owl:NamedIndividual ,
-                           mls:DatasetCharacteristic .
-
 :numberOfInstances rdf:type owl:NamedIndividual ,
                             mls:DatasetCharacteristic .
 
 :numberOfMissingValues rdf:type owl:NamedIndividual ,
                                 mls:DatasetCharacteristic .
 
-:classEntropy rdf:type owl:NamedIndividual ,
-                       mls:DatasetCharacteristic .
-                       
 :decisionStumpAUC rdf:type owl:NamedIndividual ,
                        mls:DatasetCharacteristic .
                       
-:j48_001_Stump rdf:type owl:NamedIndividual ,
-                       mls:DatasetCharacteristic .
-
 :defaultAccuracy rdf:type owl:NamedIndividual ,
                        mls:DatasetCharacteristic .
 
@@ -657,6 +820,7 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 @prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 
 :wekaLogisticMSetting29 rdf:type owl:NamedIndividual ,
