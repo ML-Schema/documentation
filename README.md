@@ -1,2 +1,2 @@
 # documentation
-See http://ml-schema.github.io/documentation/ML%20Schema.html
+See http://ml-schema.github.io/documentation
