@@ -535,8 +535,10 @@ The following ML Schema example describes the entities involved to model a singl
            
            mls:executes :wekaLogistic ;
            
-           mls:hasInput :credit-a ;
-           
+           mls:hasInput :credit-a , 
+                        :wekaLogisticMSetting29 ,
+                        :wekaLogisticRSetting29 ;
+
            mls:hasOutput :modelEvaluation100241 ,
                          :wekaLogisticModel100241 ;
            
@@ -624,12 +626,13 @@ The following ML Schema example describes the entities involved to model a singl
 :task29 rdf:type owl:NamedIndividual ,
                  mls:Task ;
         
-        mls:definedOn :credit-a ,
-                      :evaluationSpecification1 .
+        mls:definedOn :credit-a .
 
 
 :evaluationSpecification1 rdf:type owl:NamedIndividual ,
                                    mls:EvaluationSpecification ;
+                                   
+                          mls:defines :task29 ;
                           
                           mls:hasPart :TenFoldCrossValidation ,
                                       :predictiveAccuracy .
@@ -778,6 +781,8 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 
 :evaluationSpecification1 rdf:type owl:NamedIndividual ,
                                    mls:EvaluationSpecification ;
+                                   
+                          mls:defines :task29 ;         
                           
                           mls:hasPart :TenFoldCrossValidation ,
                                       :predictiveAccuracy .
@@ -906,7 +911,18 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 
 
 :run100241 rdf:type owl:NamedIndividual ,
-                    mls:Run .
+                    mls:Run 
+                    
+           mls:executes :wekaLogistic ;
+           
+           mls:hasInput :credit-a , 
+                        :wekaLogisticMSetting29 ,
+                        :wekaLogisticRSetting29 ;
+
+           mls:hasOutput :modelEvaluation100241 ,
+                         :wekaLogisticModel100241 ;
+           
+           mls:realizes :task29 .
 
 </pre></div>
 
@@ -923,13 +939,13 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 :task29 rdf:type owl:NamedIndividual ,
                  mls:Task ;
         
-        mls:definedOn :credit-a ,
-                      :evaluationSpecification1 .
+        mls:definedOn :credit-a .
 
 </pre></div>
 
 
 <div id="d4e63" class="entity"><a name="http://www.w3.org/ns/mls#definedOn"></a><h3>definedOn<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#definedOn</p><div class="comment"><span class="markdown">A relation between a task and either the data or an evaluation specification pertinent to this task.</span></div><div class="description"><dl><dt>has super-properties</dt><dd><span class="dotted" title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</span></dd></dl></div></div>
+<div id="d4e64" class="entity"><a name="http://www.w3.org/ns/mls#defines"></a><h3>definedOn<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#defines</p><div class="comment"><span class="markdown">A relation between an evaluation specification and a task.</span></div><div class="description"><dl><dt>has super-properties</dt><dd><span class="dotted" title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</span></dd></dl></div></div>
 <div id="d4e73" class="entity"><a name="http://www.w3.org/ns/mls#executes"></a><h3>executes<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#executes</p><div class="comment"><span class="markdown">A relation between a run and an implemantation that is being executed during the run.</span></div><div class="description"><dl><dt>has super-properties</dt><dd><span class="dotted" title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</span></dd></dl></div></div>
 <div id="d4e81" class="entity"><a name="http://www.w3.org/ns/mls#hasHyperParameter"></a><h3>hasHyperParameter<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#hasHyperParameter</p><div class="comment"><span class="markdown">A relation between an implementation of a machine learning algorithm and its hyperparameter.</span></div><div class="description"><dl><dt>has super-properties</dt><dd><span class="dotted" title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</span></dd></dl></div></div>
 <div id="d4e91" class="entity"><a name="http://www.w3.org/ns/mls#hasInput"></a><h3>hasInput<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#hasInput</p><div class="comment"><span class="markdown">A relation between a run and data that is taken as input to the run.</span></div><div class="description"><dl><dt>has super-properties</dt><dd><span class="dotted" title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</span></dd></dl></div></div>
