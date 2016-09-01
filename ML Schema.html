@@ -469,13 +469,13 @@ It can be specialized to create new classes and properties. It can be mapped to 
 <div id="introduction">
 <h2><span class="secno">1. </span>Introduction</h2>
 <p> 
-<p>The core vocabulary of ML Schema deals with machine learning algorithms. 
+<p>The core vocabulary of ML Schema deals with machine learning (ML) algorithms. 
 The schema can be used to represent the algorithms, the machine learning tasks they address, their implementations and executions, as well as inputs (e.g., data) and outputs (e.g., models) they specify.
 </p>
 <p>
 This lightweight schema may be used as a basis for ontology development projects, markup languages and data exchange standards.
 In particular, it aims to align existing machine learning ontologies (see Section XXX) and to support development of more specific ontologies with specific purposes/applications.
-The purpose is to increase interoperability by preventing a proliferation of incompatible machine learning ontologies.
+The main purpose is to increase interoperability by preventing a proliferation of incompatible machine learning ontologies as well as to provide a high-level standard to represent machine learning data. Thus, this scenario leads to a more representative and comprehensive ontology derived from existing state-of-the-art ML schemas.
 </p>
 
 <p>
@@ -487,19 +487,33 @@ Another goal of ML Schema related to interoperability and reproducible research 
 
 </p>
 </div>
+   <div id="notations" class="section">    
+       <h3><span class="secno">1.1 </span>Benefits</h3>  
+       Despite recent efforts to achieve a high level of interoperability of Machine Learning (ML) experiments we still run into problems created due to the existence of different ML platforms: each of those have a specific conceptualization or schema for representing data and metadata (<i>vertical interoperability</i>). This scenario leads to an extra coding-effort to achieve both the desired interoperability and a better provenance level as well as a more automatized environment for obtaining the generated results.
+
+       <!-- TODO: Please add 1 very short sentence here about your ontology -->
+       To reduce the gap, ML vocabularies and ontologies have been proposed. 
+       <ul>
+        <li><a href="http://google.com/">Onto-DM</a></li>
+        <li><a href="http://google.com/">DMOP</a></li>
+        <li><a href="http://google.com/">Expose</a></li>
+        <li><a href="http://mex.aksw.org/">MEX Vocabulary</a></li>
+            has been designed to tackle the problem of managing machine learning outcomes and sharing provenance information particularly on the basic machine learning iterations in a lightweight format  
+       </ul>
+   </div>
 
    <div id="notations" class="section">    
-       <h3><span class="secno">1.1 </span>Document outline</h3>  
+       <h3><span class="secno">1.2 </span>Document outline</h3>  
 
    </div>
 
    <div id="notations" class="section">    
-       <h3><span class="secno">1.2 </span>Notational Conventions</h3>  
+       <h3><span class="secno">1.3 </span>Notational Conventions</h3>  
 
    </div>
 
    <div class="informative section" id="namespaces">
-         <h3><span class="secno">1.3 </span>Namespaces</h3><p><em>This section is non-normative.</em></p>
+         <h3><span class="secno">1.4 </span>Namespaces</h3><p><em>This section is non-normative.</em></p>
          <p>The following namespace prefixes are used throughout this document.
 
          </p><div style="text-align: left;">
