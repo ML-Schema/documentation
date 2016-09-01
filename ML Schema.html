@@ -489,10 +489,10 @@ Another goal of ML Schema related to interoperability and reproducible research 
 </div>
    <div id="notations" class="section">    
        <h3><span class="secno">1.1 </span>Benefits</h3>  
-       Despite recent efforts to achieve a high level of interoperability of Machine Learning (ML) experiments we still run into problems created due to the existence of different ML platforms: each of those have a specific conceptualization or schema for representing data and metadata (<b>vertical interoperability</b>). This scenario leads to an extra coding-effort to achieve both the desired interoperability and a better provenance level as well as a more automatized environment for obtaining the generated results.
+       Despite recent efforts to achieve a high level of interoperability of Machine Learning (ML) experiments we still run into problems created due to the existence of different ML platforms: each of those have a specific conceptualization or schema for representing data and metadata (Fig1: itens 3 and 4: <b>vertical interoperability</b>). This scenario leads to an extra coding-effort (Fig1: item 2) to achieve both the desired interoperability and a better provenance level as well as a more automatized environment for obtaining the generated results.
 
        <!-- TODO: Please add 1 very short sentence here about your ontology -->
-       To reduce the gap, ML vocabularies and ontologies have been proposed. 
+       To reduce the gap, ML vocabularies and ontologies have been proposed (Fig1: item 5).
        <ul>
         <li><a href="http://google.com/">Onto-DM</a></li>
         <li><a href="http://google.com/">DMOP</a></li>
@@ -500,7 +500,14 @@ Another goal of ML Schema related to interoperability and reproducible research 
         <li><a href="http://mex.aksw.org/">MEX Vocabulary</a> (mex-core, mex-algo and mex-perf) has been designed to tackle the problem of managing machine learning outcomes and sharing provenance information particularly on the basic machine learning iterations in a lightweight format.</li>
        </ul>
    
-        However, we argue it still can significantly be reduced by aligning those in order to achieve also interoperability among state-of-the-art (SOTA) schemata, i.e., to achieve the <b>horizontal interoperability</b>. Therefore, different groups of researchers can exchange SOTA metadata files in a transparent manner, e.g.: from OntoDM and MEX (<code>MLSchema.Schema data = mlschema.convert('myfile.ttl', MLSchema.Ontology.OntoDM, MLSchema.Ontology.MEX)</code>). Besides a higher level of interoperability, it direct benefits ML Ecosystems (e.g.: <a href="http://www.openml.org/">OpenML</a>) and ML Metadata Repositories (e.g.: <a href="http://wasota.aksw.org/">WASOTA</a>) which can rely on a more representative standard in their architecures.
+        However, we argue it still can significantly be reduced by aligning those (Fig1: item 5) in order to achieve also interoperability among state-of-the-art (SOTA) schemata, i.e., to achieve the <b>horizontal interoperability</b> (Fig1: item 6). Therefore, different groups of researchers could exchange SOTA metadata files in a transparent manner, e.g.: from OntoDM and MEX (<code>MLSchema.Schema data = mlschema.convert('myfile.ttl', MLSchema.Ontology.OntoDM, MLSchema.Ontology.MEX)</code>). 
+        <div align="center">
+            <figure>
+                <img align="center" src="metalevel.png" height="40%" width="40%" alt="Vertical and Horizontal Interoperability across ML Environments">
+                <figcaption>Fig.1 - Vertical and Horizontal Interoperability across ML Environments.</figcaption>
+            </figure>
+        </div>
+        Besides a higher level of interoperability, it direct benefits ML Ecosystems (e.g.: <a href="http://www.openml.org/">OpenML</a>) and ML Metadata Repositories (e.g.: <a href="http://wasota.aksw.org/">WASOTA</a>) which can rely on a more representative standard in their architecures.
 
    </div>
 
