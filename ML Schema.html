@@ -462,28 +462,28 @@ It can be specialized to create new classes and properties. It can be mapped to 
 <li><a href="#annotationproperties">Annotation Properties</a></li>
 <li><a href="#namespacedeclarations">Namespace Declarations</a></li>
 </ol>
+<li><a href="#acknowledgements">Acknowledgements</a></li>
 </ol>
 
 <!-- OddPage -->
 <div id="introduction">
 <h2><span class="secno">1. </span>Introduction</h2>
 <p> 
-The core vocabulary of ML Schema deals with machine learning algorithms. 
+<p>The core vocabulary of ML Schema deals with machine learning algorithms. 
 The schema can be used to represent the algorithms, the machine learning tasks they address, their implementations and executions, as well as inputs (e.g., data) and outputs (e.g., models) they specify.
-
+</p>
+<p>
 This lightweight schema may be used as a basis for ontology development projects, markup languages and data exchange standards.
 In particular, it aims to align existing machine learning ontologies (see Section XXX) and to support development of more specific ontologies with specific purposes/applications.
-The aim is to increase interoperability by preventing a proliferation of incompatible machine learning ontologies.
+The purpose is to increase interoperability by preventing a proliferation of incompatible machine learning ontologies.
+</p>
 
-
+<p>
 The schema also defines a relationship between machine learning algorithms and their single executions and experiments and studies encompassing them. 
-argue that the proposed pattern will stimulate the development of standards in order to achieve high level of interoperability among scientific experiments. Thus, the proposed template provides guidance for supporting further developments of schemata that represent this flow, ensuring their logical alignment. 
-We aim at defining a logical interface to guide the design process of representing the generic triple defined by \textit{input, algorithm and output}. One advantage of this conceptual alignment is that it allows us to formalize conceptual definitions, facilitating the metadata interchange process and fostering reproducible research. 
-
-
-Turn machine learning algorithms and results into linked open data
-
-
+It aims at stimulating the development of standards in order to achieve high level of interoperability among scientific experiments concerning machine learning. 
+By facilitating the metadata interchange process, the ML Schema may foster reproducible research. 
+Another goal of ML Schema related to interoperability and reproducible research it to facilitate turning machine learning algorithms and results into linked open data.
+</p>
 
 </p>
 </div>
@@ -560,7 +560,9 @@ The following ML Schema example describes the entities involved to model a singl
            mls:hasOutput :modelEvaluation100241 ,
                          :wekaLogisticModel100241 ;
            
-           mls:realizes :task29 .
+           mls:realizes :logisticRegression ;
+
+           mls:achieves :task29 .
 
 
 :wekaLogistic rdf:type owl:NamedIndividual ,
@@ -612,24 +614,25 @@ The following ML Schema example describes the entities involved to model a singl
 
                                                           
 :credit-a rdf:type owl:NamedIndividual ,
-                   mls:Dataset ;
+                 mls:Dataset ;
           
-          mls:hasQuality :decisionStumpAUC ,
-                         :defaultAccuracy ,
-                         :numberOfInstances ,
-                         :numberOfMissingValues .
+          mls:hasQuality :defaultAccuracy ,
+                         :numberOfFeatures ,
+                         :numberOfInstances .
                          
-:decisionStumpAUC rdf:type owl:NamedIndividual ,
-                           mls:DatasetCharacteristic .
                            
 :defaultAccuracy rdf:type owl:NamedIndividual ,
-                          mls:DatasetCharacteristic .
-                           
-:numberOfInstances rdf:type owl:NamedIndividual ,
-                            mls:DatasetCharacteristic .
+                          mls:DatasetCharacteristic ; 
+                 mls:hasValue "0.56"^^xsd:float .          
+                          
+:numberOfFeatures rdf:type owl:NamedIndividual ,
+                                mls:DatasetCharacteristic ;
+                 mls:hasValue "16"^^xsd:long .
 
-:numberOfMissingValues rdf:type owl:NamedIndividual ,
-                                mls:DatasetCharacteristic .
+:numberOfInstances rdf:type owl:NamedIndividual ,
+                            mls:DatasetCharacteristic ;  
+                 mls:hasValue "690"^^xsd:long .           
+
                 
 :wekaLogisticModel100241 rdf:type owl:NamedIndividual ,
                                   mls:Model .
@@ -664,9 +667,10 @@ The following ML Schema example describes the entities involved to model a singl
 
 
 <p>
-In the example, the run <code>:run100241</code> executes the implementation <code>:wekaLogistic</code>.
+In the example, the run <code>:run100241</code> executes the implementation <code>:wekaLogistic</code> of the algorithm <code>:logisticRegression</code> which this execution realizes. 
 The run has on input the <code>:credit-a</code> dataset and its output is both the model <code>:wekaLogisticModel100241</code> and the model evaluation <code>:modelEvaluation100241</code>.
-The run realizes the task <code>:task29</code>.
+The run achieves the task <code>:task29</code>.
+
 </p>
 <p>
 The implementation <code>:wekaLogistic</code> implements the algorithm <code>:logisticRegression</code>.
@@ -1006,6 +1010,24 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 <div id="d4e50" class="entity"><a name="http://www.w3.org/2004/02/skos/core#note"></a><h3>note<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#note</p></div>
 <div id="d4e42" class="entity"><a name="http://purl.org/dc/terms/publisher"></a><h3>publisher<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://purl.org/dc/terms/publisher</p></div>
 <div id="d4e46" class="entity"><a name="http://purl.org/dc/terms/title"></a><h3>title<sup title="annotation property" class="type-ap">ap</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a></span></h3><p><strong>IRI:</strong> http://purl.org/dc/terms/title</p></div></div><div id="namespacedeclarations"><h2>Namespace Declarations <span class="backlink"> back to <a href="#toc">ToC</a></span></h2><dl><dt><em>default namespace</em></dt><dd>http://www.w3.org/ns/mls#</dd><dt>1-1</dt><dd>http://purl.org/dc/elements/1.1/</dd><dt>aboutdcmi</dt><dd>http://purl.org/dc/aboutdcmi#</dd><dt>owl</dt><dd>http://www.w3.org/2002/07/owl#</dd><dt>protege</dt><dd>http://protege.stanford.edu/plugins/owl/protege#</dd><dt>rdf</dt><dd>http://www.w3.org/1999/02/22-rdf-syntax-ns#</dd><dt>rdfs</dt><dd>http://www.w3.org/2000/01/rdf-schema#</dd><dt>rfc</dt><dd>http://www.ietf.org/rfc/</dd><dt>skos</dt><dd>http://www.w3.org/2004/02/skos/core#</dd><dt>terms</dt><dd>http://purl.org/dc/terms/</dd><dt>xsd</dt><dd>http://www.w3.org/2001/XMLSchema#</dd></dl></div><p class="endnote">This HTML document was obtained by processing the OWL ontology source code through <a href="http://www.essepuntato.it/lode">LODE</a>, <em>Live OWL Documentation Environment</em>, developed by <a href="http://www.essepuntato.it">Silvio Peroni</a>.</p></body>
+
+
+<div id="acknowledgements">
+<h2><span class="secno">3. </span>Acknowledgements</h2>
+This section is non-normative.
+
+The editors of this document thank the developers of the tools that were used to create the ML Schema and parts of this document. 
+Those tools were of major help for developing ML Schema as well as the documentation.
+
+<ul>
+         <li><a href="http://protege.stanford.edu">Protégé</a> group from the Stanford University for providing a free, open-source ontology editor and framework for building intelligent systems.</li>
+         <li>Silvio Peroni for <a href="http://lode.sourceforge.net">LODE</a> tool for the CSS styling of parts of this page.</li>
+         <li><a href="http://astah.net/editions/community">Astah Community Edition</a> developers for providing a tool for visualizing our models in UML.</li>
+         <li><a href="http://berjon.com/">Robin Berjon</a> for providing ReSpec 3 CSS for styling of parts of this page.</li>
+</ul>
+
+</div>
+
 
 <h2><span class="secno">3. </span>Got style?</h2>
 
