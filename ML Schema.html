@@ -519,6 +519,8 @@ Another goal of ML Schema related to interoperability and reproducible research 
 
    <div id="notations" class="section">    
        <h3><span class="secno">1.3 </span>Notational Conventions</h3>  
+       
+       Throughout this document, we use <a href="http://www.w3.org/TR/turtle/">Turtle RDF Syntax</a> to express examples showing the use of the schema. 
 
    </div>
 
@@ -551,21 +553,30 @@ Another goal of ML Schema related to interoperability and reproducible research 
 <h2><span class="secno">2. </span>The ML Schema description</h2>
 </div>
 
+
+The following diagram depicts the core ML Schema. Boxes represent classes of the schema. 
+Arrows without filled heads represent properties, arrows with empty heads represent subclass relations, and arrows with diamonds represent part of relations. 
+
 <dl><dt>IRI:</dt><dd>http://www.w3.org/ns/mls#</dd><dt>Version IRI:</dt><dd>http://www.w3.org/2016/03/mls#</dd></dl><dl><dt>Other visualisation:</dt><dd><a href="http://eelst.cs.unibo.it/apps/LODE/source?url=http://www.essepuntato.it/tmp/1460029662-ontology">Ontology source</a></dd></dl></div>
 
 <div id="mlschema-core-figure" style="text-align: center;" class="figure">
     <img src="ML-Schema.png" style="width: 100%; min-width: 25em; max-width: 60em" alt="ML Schema core terms">
     <div class="figcaption"><a href="#mlschema-core-figure">Figure 1</a>. 
       The ML Schema core vocabulary.<br>
-      The diagram depicts Information Entities as white ovals, Processes as blue ovals, and Literal values as yellow rectangles.<br>
+      The diagram depicts Information Entities as yellow boxes, Processes as blue boxes, and Qualities as green boxes.<br>
     </div>
 </div>
 
+<br/><br/>
 
-The following ML Schema example describes the entities involved to model a single run of the implementation of a logistic regression algorithm from a Weka machine learning environment.
+We will illustrate the ML schema by means of two examples.
 
+Firstly, we illustrate the ML schema with an example derived from the <a href="http://www.openml.org">OpenML</a> portal. 
+The example describes entities involved to model a single run of the implementation of a logistic regression algorithm from a Weka machine learning environment.
+The referenced individuals can easily be looked up online.
+For instance, run 100241 can be found on <a href="http://www.openml.org/r/100241">http://www.openml.org/r/100241</a>.
 
-<div class="example"><div class="example-title"><span>Example</span></div><pre class="example">
+<div class="example"><div class="example-title"><span>Example 1</span></div><pre class="example">
 @prefix : &lt;http://example.org#&gt; .
 @prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
