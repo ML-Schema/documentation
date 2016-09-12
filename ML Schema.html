@@ -540,7 +540,16 @@ Another goal of ML Schema related to interoperability and reproducible research 
             <tr><td><a>owl</a></td><td>http://www.w3.org/2002/07/owl#</td><td>The OWL namespace [<cite><a class="bibref" rel="biblioentry" href="#bib-OWL2-OVERVIEW">OWL2-OVERVIEW</a></cite>]</td></tr>
 
             <tr><td><a>mls</a></td><td>http://www.w3.org/ns/mls#</td>
-                <td>The ML Schema namespace XXX</td></tr>
+                <td>The ML Schema namespace </td></tr>
+
+            <tr><td><a>mls</a></td><td>http://www.w3.org/ns/mls#</td>
+                <td>The ML Schema namespace </td></tr>
+
+            <tr><td><a>frapo</a></td><td>http://www.sparontologies.net/ontologies/frapo; http://purl.org/cerif/frapo</td>
+                <td>Funding, Research Administration and Projects Ontology</td></tr>
+
+            <tr><td><a>dc</a></td><td>http://purl.org/dc/</td>
+                <td>Dublin Core Metadata Initiative</td></tr>
 
             <tr><td><a>(others)</a></td><td>(various)</td><td>Other namespace prefixes appearing only in examples. <br> 
             </tbody></table>
@@ -571,7 +580,7 @@ Arrows without filled heads represent properties, arrows with empty heads repres
 
 We will illustrate the ML schema by means of two examples.
 
-Firstly, we illustrate the ML schema with an example derived from the <a href="http://www.openml.org">OpenML</a> portal. 
+Firstly, we illustrate the ML schema with an example derived from the <a href="http://www.openml.org">OpenML</a> portal (see Fig. 2). 
 The example describes entities involved to model a single run of the implementation of a logistic regression algorithm from a Weka machine learning environment.
 The referenced individuals can easily be looked up online.
 For instance, run 100241 can be found on <a href="http://www.openml.org/r/100241">http://www.openml.org/r/100241</a>.
@@ -726,16 +735,28 @@ The evaluation specification <code>:evaluationSpecification1</code> has parts: t
 </p>        
 
 <div id="mlschema-example1-figure" style="text-align: center;" class="figure">
-    <img src="ML-Schema-Example1.png" style="width: 100%; min-width: 25em; max-width: 60em" alt="An example concerning a Run.">
+    <img src="ML-Schema-Example1.png" style="width: 100%; min-width: 25em; max-width: 60em" alt="An example concerning ML Run.">
     <div class="figcaption"><a href="#mlschema-example1-figure">Figure 2</a>. 
-      The ML Schema core vocabulary.<br>
-      The diagram depicts Information Entities as white ovals, Processes as blue ovals, and Literal values as yellow rectangles.<br>
+      An example illustrating a single run of an ML algorithm implementation.<br>
+    </div>
+</div>
+
+
+Secondly, we illustrate ML schema with an example Describing ML study and the corresponding dataset, providing reference to a publication, and acknowledging the funding body.
+This example referes to the article “Multi-Task Learning with a Natural Metric for Quantitative Structure Activity Relationship Learning” by Sadawi et al which reports on the ML study carried out within the Meta-QSAR project funded by EPSRC (grant EP/K030582/1). 
+The dataset is freely available in OpenML (see Fig. 3). 
+
+
+<div id="mlschema-core-figure" style="text-align: center;" class="figure">
+    <img src="ML-Schema-Example2.png" style="width: 100%; min-width: 25em; max-width: 60em" alt="An example concerning ML study">
+    <div class="figcaption"><a href="#mlschema-example2-figure">Figure 3</a>. 
+      An example illustrating an ML study.<br>
     </div>
 </div>
 
                 
 <br>
-TODO: Include an example of an experiment and a study. 
+TODO: Include a code of the example of ML study. 
 </br>
 
 <hr /><div id="classes"><h2>Classes</h2><ul class="hlist">
