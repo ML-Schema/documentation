@@ -548,9 +548,12 @@ Another goal of ML Schema related to interoperability and reproducible research 
             <tr><td><a>frapo</a></td><td>http://www.sparontologies.net/ontologies/frapo; http://purl.org/cerif/frapo</td>
                 <td>Funding, Research Administration and Projects Ontology</td></tr>
 
-            <tr><td><a>dc</a></td><td>http://purl.org/dc/</td>
-                <td>Dublin Core Metadata Initiative</td></tr>
-
+            <tr><td><a>dc</a></td><td>http://purl.org/dc/elements/1.1/</td>
+                <td>Dublin Core</td></tr>
+                
+            <tr><td><a>foaf</a></td><td>http://xmlns.com/foaf/0.1/</td>
+                <td>FOAF Vocabulary Specification</td></tr>
+                
             <tr><td><a>(others)</a></td><td>(various)</td><td>Other namespace prefixes appearing only in examples. <br> 
             </tbody></table>
          </div>
@@ -578,12 +581,16 @@ Arrows without filled heads represent properties, arrows with empty heads repres
 
 <br/><br/>
 
+<p>
 We will illustrate the ML schema by means of two examples.
+</p>
 
+<p>
 Firstly, we illustrate the ML schema with an example derived from the <a href="http://www.openml.org">OpenML</a> portal (see Fig. 2). 
 The example describes entities involved to model a single run of the implementation of a logistic regression algorithm from a Weka machine learning environment.
 The referenced individuals can easily be looked up online.
 For instance, run 100241 can be found on <a href="http://www.openml.org/r/100241">http://www.openml.org/r/100241</a>.
+</p>
 
 <div class="example"><div class="example-title"><span>Example 1</span></div><pre class="example">
 @prefix : &lt;http://example.org#&gt; .
@@ -742,22 +749,76 @@ The evaluation specification <code>:evaluationSpecification1</code> has parts: t
 </div>
 
 
-Secondly, we illustrate ML schema with an example Describing ML study and the corresponding dataset, providing reference to a publication, and acknowledging the funding body.
-This example referes to the article “Multi-Task Learning with a Natural Metric for Quantitative Structure Activity Relationship Learning” by Sadawi et al which reports on the ML study carried out within the Meta-QSAR project funded by EPSRC (grant EP/K030582/1). 
-The dataset is freely available in OpenML (see Fig. 3). 
-
+<p>
+Secondly, we illustrate ML schema with an example describing ML study (<code>:study1</code>) and the corresponding dataset <code>:mtl_dataset</code>, providing reference to a publication (<code>:article1</code>), and acknowledging the funding body (see Fig. 3) .
+This example refers to the article “Multi-Task Learning with a Natural Metric for Quantitative Structure Activity Relationship Learning” by Sadawi et al which reports on the ML study carried out within the Meta-QSAR project (<code>:meta-qsar_project</code>) funded by <code>:EPSRC</code> (<code>:grant1</code> with number EP/K030582/1). 
+The referred dataset is freely available in OpenML. 
+</p>
 
 <div id="mlschema-core-figure" style="text-align: center;" class="figure">
     <img src="ML-Schema-Example2.png" style="width: 100%; min-width: 25em; max-width: 60em" alt="An example concerning ML study">
     <div class="figcaption"><a href="#mlschema-example2-figure">Figure 3</a>. 
-      An example illustrating an ML study.<br>
+      An example illustrating ML study.<br>
     </div>
 </div>
 
                 
-<br>
-TODO: Include a code of the example of ML study. 
-</br>
+<div class="example"><div class="example-title"><span>Example 2</span></div><pre class="example">
+@prefix : &lt;http://example.org#&gt; .
+@prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix dc:  &lt;http://purl.org/dc/elements/1.1/>&gt; .
+@prefix frapo: &lt;http://purl.org/cerif/frapo/&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; . 
+
+
+dc:BibliographicResource rdf:type owl:Class .
+
+
+mls:Study rdfs:subClassOf frapo:Investigation .
+
+:EPSRC rdf:type frapo:FundingAgency ,
+                owl:NamedIndividual ;
+       
+       frapo:awards :grant1 .
+
+:article1 rdf:type dc:BibliographicResource ,
+                   owl:NamedIndividual ;
+          
+          rdfs:label "Article: Multi Task Learning with a Natural Metric for Quantitative Structure Activity Relationship Learning" .
+
+:grant1 rdf:type frapo:Grant ,
+                 owl:NamedIndividual ;
+        
+        frapo:hasGrantNumber "EP/K030582/1" ;
+        
+        frapo:funds :meta-qsar_project .
+
+
+:meta-qsar_project rdf:type owl:NamedIndividual ,
+                            foaf:Project .
+
+:mtl_dataset rdf:type owl:NamedIndividual ,
+                      mls:Dataset ;
+
+             dc:licence :CC_by_3.0 ;
+             dc:dateSubmitted "06/09/15" ;
+             dc:source "http://www.openml.org/s/3" . 
+
+:CC_by_3.0 rdf:type owl:NamedIndividual ,
+                    dc:LicenceDocument . 
+
+:study1 rdf:type owl:NamedIndividual ,
+                mls:Study ;
+        
+        frapo:enables :meta-qsar_project ;
+        
+        frapo:hasOutput :mtl_dataset .
+
+</pre></div>
+
 
 <hr /><div id="classes"><h2>Classes</h2><ul class="hlist">
 <li><a href="#d4e147" title="http://www.w3.org/ns/mls#Algorithm"><span>algorithm</span></a></li>
