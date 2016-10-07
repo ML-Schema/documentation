@@ -22,14 +22,14 @@
                         	$.scrollTo(element);
                         }
                     });
-        </script>  
+        </script>
  <style>/*****************************************************************
  * ReSpec 3 CSS
  * Robin Berjon - http://berjon.com/
  *****************************************************************/
 
 /* --- INLINES --- */
-em.rfc2119 { 
+em.rfc2119 {
     text-transform:     lowercase;
     font-variant:       small-caps;
     font-style:         normal;
@@ -144,7 +144,7 @@ div.example-title {
     color: #b9ab2d;
 }
 div.example-title span {
-    text-transform: uppercase;   
+    text-transform: uppercase;
 }
 aside.example, div.example, div.illegal-example {
     padding: 0.5em;
@@ -159,7 +159,7 @@ aside.example, div.example {
     border-left-width: .5em;
     border-left-style: solid;
     border-color: #e0cb52;
-    background: #fcfaee;    
+    background: #fcfaee;
 }
 
 aside.example div.example {
@@ -435,14 +435,14 @@ table.exceptions table {
 <section id="abstract">
 <h2>Abstract</h2>
 
-<p>The ML Schema is a simple shared schema that provides a set of classes, properties, and restrictions that can be used to represent and interchange information on data mining and machine learning algorithms, datasets, and experiments. 
+<p>The ML Schema is a simple shared schema that provides a set of classes, properties, and restrictions that can be used to represent and interchange information on data mining and machine learning algorithms, datasets, and experiments.
 It can be specialized to create new classes and properties. It can be mapped to more complex, specific ontologies on data mining and machine learning, and also used as a basis for markup languages and data exchange standards.  </p>
 <p style="text-align: center;">The namespace for ML Schema terms is <span class="repeated">http://www.w3.org/ns/mls#</span>.
 </p>
 
 <p style="text-align: center;">The OWL encoding of the ML Schema is available <a href="https://github.com/ML-Schema/core/blob/master/MLSchema.ttl">here</a>.
 </p>
-        
+
 </section>
 
 <h2>Status of This Document</h2>
@@ -467,8 +467,8 @@ It can be specialized to create new classes and properties. It can be mapped to 
 <!-- OddPage -->
 <div id="introduction">
 <h2><span class="secno">1. </span>Introduction</h2>
-<p> 
-<p>The core vocabulary of ML Schema deals with machine learning (ML) algorithms. 
+<p>
+<p>The core vocabulary of ML Schema deals with machine learning (ML) algorithms.
 The schema can be used to represent the algorithms, the machine learning tasks they address, their implementations and executions, as well as inputs (e.g., data) and outputs (e.g., models) they specify.
 </p>
 <p>
@@ -478,16 +478,16 @@ The main purpose is to increase interoperability by preventing a proliferation o
 </p>
 
 <p>
-The schema also defines a relationship between machine learning algorithms and their single executions and experiments and studies encompassing them. 
-It aims at stimulating the development of standards in order to achieve high level of interoperability among scientific experiments concerning machine learning. 
-By facilitating the metadata interchange process, the ML Schema may foster reproducible research. 
+The schema also defines a relationship between machine learning algorithms and their single executions and experiments and studies encompassing them.
+It aims at stimulating the development of standards in order to achieve high level of interoperability among scientific experiments concerning machine learning.
+By facilitating the metadata interchange process, the ML Schema may foster reproducible research.
 Another goal of ML Schema related to interoperability and reproducible research it to facilitate turning machine learning algorithms and results into linked open data.
 </p>
 
 </p>
 </div>
-   <div id="notations" class="section">    
-       <h3><span class="secno">1.1 </span>Benefits</h3>  
+   <div id="notations" class="section">
+       <h3><span class="secno">1.1 </span>Benefits</h3>
        Despite recent efforts to achieve a high level of interoperability of Machine Learning (ML) experiments we still run into problems created due to the existence of different ML platforms: each of those have a specific conceptualization or schema for representing data and metadata (Fig1: itens 3 and 4: <b>vertical interoperability</b>). This scenario leads to an extra coding-effort (Fig1: item 2) to achieve both the desired interoperability and a better provenance level as well as a more automatized environment for obtaining the generated results.
 
        <!-- TODO: Please add 1 very short sentence here about your ontology -->
@@ -495,31 +495,34 @@ Another goal of ML Schema related to interoperability and reproducible research 
        <ul>
         <li><a href="http://google.com/">Onto-DM</a></li>
         <li><a href="http://google.com/">DMOP</a></li>
-        <li><a href="http://google.com/">Expose</a></li>
+        <li><a href="http://www.openml.org/downloads/expose.owl">Expose</a></li>
         <li><a href="http://mex.aksw.org/">MEX Vocabulary</a> (mex-core, mex-algo and mex-perf) has been designed to tackle the problem of managing machine learning outcomes and sharing provenance information particularly on the basic machine learning iterations in a lightweight format.</li>
        </ul>
-   
-        However, we argue it still can significantly be reduced by aligning those (Fig1: item 5) in order to achieve also interoperability among state-of-the-art (SOTA) schemata, i.e., to achieve the <b>horizontal interoperability</b> (Fig1: item 6). Therefore, different groups of researchers could exchange SOTA metadata files in a transparent manner, e.g.: from OntoDM and MEX (<code>MLSchema.Schema data = mlschema.convert('myfile.ttl', MLSchema.Ontology.OntoDM, MLSchema.Ontology.MEX)</code>). 
+
+        However, we argue it still can significantly be reduced by aligning those (Fig1: item 5) in order to achieve also interoperability among state-of-the-art (SOTA) schemata, i.e., to achieve the <b>horizontal interoperability</b> (Fig1: item 6). Therefore, different groups of researchers could exchange SOTA metadata files in a transparent manner, e.g.: from OntoDM and MEX (<code>MLSchema.Schema data = mlschema.convert('myfile.ttl', MLSchema.Ontology.OntoDM, MLSchema.Ontology.MEX)</code>).
         <div align="center">
             <figure>
                 <img align="center" src="metalevel.png" height="40%" width="40%" alt="Vertical and Horizontal Interoperability across ML Environments">
                 <figcaption>Fig.1 - Vertical and Horizontal Interoperability across ML Environments.</figcaption>
             </figure>
         </div>
-        Besides a higher level of interoperability, it direct benefits ML Ecosystems (e.g.: <a href="http://www.openml.org/">OpenML</a>) and ML Metadata Repositories (e.g.: <a href="http://wasota.aksw.org/">WASOTA</a>) which can rely on a more representative standard in their architecures.
+        <p>Besides a higher level of interoperability, it direct benefits ML Ecosystems (e.g.: <a href="http://www.openml.org/">OpenML</a>) and ML Metadata Repositories (e.g.: <a href="http://wasota.aksw.org/">WASOTA</a>) which can rely on a more representative standard in their architecures.
+        </p>
+        <p>In <a href="http://www.openml.org/">OpenML</a>, MLSchema is used to export all machine learning datasets, tasks, workflows and runs as linked open data (in RDF). This allows scientists to connect the results of their machine learning experiments to other knowledge sources, or to build novel knowledge bases for machine learning research.
+        </p>
 
    </div>
 
 
-   <div id="notations" class="section">    
-       <h3><span class="secno">1.2 </span>Document outline</h3>  
+   <div id="notations" class="section">
+       <h3><span class="secno">1.2 </span>Document outline</h3>
 
    </div>
 
-   <div id="notations" class="section">    
-       <h3><span class="secno">1.3 </span>Notational Conventions</h3>  
-       
-       Throughout this document, we use <a href="http://www.w3.org/TR/turtle/">Turtle RDF Syntax</a> to express examples showing the use of the schema. 
+   <div id="notations" class="section">
+       <h3><span class="secno">1.3 </span>Notational Conventions</h3>
+
+       Throughout this document, we use <a href="http://www.w3.org/TR/turtle/">Turtle RDF Syntax</a> to express examples showing the use of the schema.
 
    </div>
 
@@ -549,11 +552,11 @@ Another goal of ML Schema related to interoperability and reproducible research 
 
             <tr><td><a>dc</a></td><td>http://purl.org/dc/elements/1.1/</td>
                 <td>Dublin Core</td></tr>
-                
+
             <tr><td><a>foaf</a></td><td>http://xmlns.com/foaf/0.1/</td>
                 <td>FOAF Vocabulary Specification</td></tr>
-                
-            <tr><td><a>(others)</a></td><td>(various)</td><td>Other namespace prefixes appearing only in examples. <br> 
+
+            <tr><td><a>(others)</a></td><td>(various)</td><td>Other namespace prefixes appearing only in examples. <br>
             </tbody></table>
          </div>
       </div>
@@ -565,14 +568,14 @@ Another goal of ML Schema related to interoperability and reproducible research 
 </div>
 
 
-The following diagram depicts the core ML Schema. Boxes represent classes of the schema. 
-Arrows without filled heads represent properties, arrows with empty heads represent subclass relations, and arrows with diamonds represent part of relations. 
+The following diagram depicts the core ML Schema. Boxes represent classes of the schema.
+Arrows without filled heads represent properties, arrows with empty heads represent subclass relations, and arrows with diamonds represent part of relations.
 
 <dl><dt>IRI:</dt><dd>http://www.w3.org/ns/mls#</dd><dt>Version IRI:</dt><dd>http://www.w3.org/2016/03/mls#</dd></dl><dl><dt>Other visualisation:</dt><dd><a href="http://eelst.cs.unibo.it/apps/LODE/source?url=http://www.essepuntato.it/tmp/1460029662-ontology">Ontology source</a></dd></dl></div>
 
 <div id="mlschema-core-figure" style="text-align: center;" class="figure">
     <img src="ML-Schema.png" style="width: 100%; min-width: 25em; max-width: 60em" alt="ML Schema core terms">
-    <div class="figcaption"><a href="#mlschema-core-figure">Figure 1</a>. 
+    <div class="figcaption"><a href="#mlschema-core-figure">Figure 1</a>.
       The ML Schema core vocabulary.<br>
       The diagram depicts Information Entities as yellow boxes, Processes as blue boxes, and Qualities as green boxes.<br>
     </div>
@@ -585,7 +588,7 @@ We will illustrate the ML schema by means of two examples.
 </p>
 
 <p>
-Firstly, we illustrate the ML schema with an example derived from the <a href="http://www.openml.org">OpenML</a> portal (see Fig. 2). 
+Firstly, we illustrate the ML schema with an example derived from the <a href="http://www.openml.org">OpenML</a> portal (see Fig. 2).
 The example describes entities involved to model a single run of the implementation of a logistic regression algorithm from a Weka machine learning environment.
 The referenced individuals can easily be looked up online.
 For instance, run 100241 can be found on <a href="http://www.openml.org/r/100241">http://www.openml.org/r/100241</a>.
@@ -600,16 +603,16 @@ For instance, run 100241 can be found on <a href="http://www.openml.org/r/100241
 
 :run100241 rdf:type owl:NamedIndividual ,
                     mls:Run ;
-           
+
            mls:executes :wekaLogistic ;
-           
-           mls:hasInput :credit-a , 
+
+           mls:hasInput :credit-a ,
                         :wekaLogisticMSetting29 ,
                         :wekaLogisticRSetting29 ;
 
            mls:hasOutput :modelEvaluation100241 ,
                          :wekaLogisticModel100241 ;
-           
+
            mls:realizes :logisticRegression ;
 
            mls:achieves :task29 .
@@ -617,22 +620,22 @@ For instance, run 100241 can be found on <a href="http://www.openml.org/r/100241
 
 :wekaLogistic rdf:type owl:NamedIndividual ,
                        mls:Implementation ;
-              
+
               mls:hasHyperParameter :wekaLogisticC ,
                                     :wekaLogisticDoNotCheckCapabilities ,
                                     :wekaLogisticM ,
                                     :wekaLogisticOutputDebugInfo ,
                                     :wekaLogisticR ;
-              
+
               mls:implements :logisticRegression .
-              
-:weka rdf:type mls:Software, 
-	      mls:hasPart :wekaLogistic. 
-              
+
+:weka rdf:type mls:Software,
+	      mls:hasPart :wekaLogistic.
+
 
 :logisticRegression rdf:type owl:NamedIndividual ,
                              mls:Algorithm .
-                             
+
 :wekaLogisticC rdf:type owl:NamedIndividual ,
                         mls:HyperParameter .
 
@@ -650,64 +653,64 @@ For instance, run 100241 can be found on <a href="http://www.openml.org/r/100241
 
 :wekaLogisticMSetting29 rdf:type owl:NamedIndividual ,
                                  mls:HyperParameterSetting ;
-                        
+
                         mls:specifiedBy :wekaLogisticM ;
-                        
+
                         mls:hasValue -1 .
 
 :wekaLogisticRSetting29 rdf:type owl:NamedIndividual ,
                                  mls:HyperParameterSetting ;
-                        
+
                         mls:specifiedBy :wekaLogisticR ;
-                        
+
                         mls:hasValue "1.0E-8"^^xsd:float .
 
-                                                          
+
 :credit-a rdf:type owl:NamedIndividual ,
                  mls:Dataset ;
-          
+
           mls:hasQuality :defaultAccuracy ,
                          :numberOfFeatures ,
                          :numberOfInstances .
-                         
-                           
+
+
 :defaultAccuracy rdf:type owl:NamedIndividual ,
-                          mls:DatasetCharacteristic ; 
-                 mls:hasValue "0.56"^^xsd:float .          
-                          
+                          mls:DatasetCharacteristic ;
+                 mls:hasValue "0.56"^^xsd:float .
+
 :numberOfFeatures rdf:type owl:NamedIndividual ,
                                 mls:DatasetCharacteristic ;
                  mls:hasValue "16"^^xsd:long .
 
 :numberOfInstances rdf:type owl:NamedIndividual ,
-                            mls:DatasetCharacteristic ;  
-                 mls:hasValue "690"^^xsd:long .           
+                            mls:DatasetCharacteristic ;
+                 mls:hasValue "690"^^xsd:long .
 
-                
+
 :wekaLogisticModel100241 rdf:type owl:NamedIndividual ,
                                   mls:Model .
 
 :modelEvaluation100241 rdf:type owl:NamedIndividual ,
                                 mls:ModelEvaluation ;
-                       
+
                        mls:specifiedBy :predictiveAccuracy ;
-                       
+
                        mls:hasValue 0.8478 .
 
 :predictiveAccuracy rdf:type owl:NamedIndividual ,
-                             mls:EvaluationMeasure . 
+                             mls:EvaluationMeasure .
 
 :task29 rdf:type owl:NamedIndividual ,
                  mls:Task ;
-        
+
         mls:definedOn :credit-a .
 
 
 :evaluationSpecification1 rdf:type owl:NamedIndividual ,
                                    mls:EvaluationSpecification ;
-                                   
+
                           mls:defines :task29 ;
-                          
+
                           mls:hasPart :TenFoldCrossValidation ,
                                       :predictiveAccuracy .
 
@@ -717,7 +720,7 @@ For instance, run 100241 can be found on <a href="http://www.openml.org/r/100241
 
 
 <p>
-In the example, the run <code>:run100241</code> executes the implementation <code>:wekaLogistic</code> of the algorithm <code>:logisticRegression</code> which this execution realizes. 
+In the example, the run <code>:run100241</code> executes the implementation <code>:wekaLogistic</code> of the algorithm <code>:logisticRegression</code> which this execution realizes.
 The run has on input the <code>:credit-a</code> dataset and its output is both the model <code>:wekaLogisticModel100241</code> and the model evaluation <code>:modelEvaluation100241</code>.
 The run achieves the task <code>:task29</code>.
 
@@ -725,8 +728,8 @@ The run achieves the task <code>:task29</code>.
 <p>
 The implementation <code>:wekaLogistic</code> implements the algorithm <code>:logisticRegression</code>.
 The implementation has five hyperparameters: <code>:wekaLogisticC</code>, <code>:wekaLogisticDoNotCheckCapabilities</code>, <code>:wekaLogisticM</code>, <code>:wekaLogisticOutputDebugInfo</code>, <code>:wekaLogisticR</code>.
-Two of these hyperparameters are set for the run <code>:run100241</code>. 
-The hyperparameter <code>:wekaLogisticM</code> has value set to <code>-1</code> (expressed via the hyperparameter setting <code>:wekaLogisticMSetting29</code>), and the hyperparameter <code>:wekaLogisticR</code> that has its value set to <code>"1.0E-8"^^xsd:float</code> (expressed via the hyperparameter setting <code>:wekaLogisticRSetting29</code>). 
+Two of these hyperparameters are set for the run <code>:run100241</code>.
+The hyperparameter <code>:wekaLogisticM</code> has value set to <code>-1</code> (expressed via the hyperparameter setting <code>:wekaLogisticMSetting29</code>), and the hyperparameter <code>:wekaLogisticR</code> that has its value set to <code>"1.0E-8"^^xsd:float</code> (expressed via the hyperparameter setting <code>:wekaLogisticRSetting29</code>).
 </p>
 <p>
 The dataset <code>:credit-a</code> has several characteristics such as: <code>:decisionStumpAUC</code>, <code>:defaultAccuracy</code>, <code>:numberOfInstances</code>, <code>:numberOfMissingValues</code>.
@@ -738,11 +741,11 @@ The value of the evaluation measure modeled via the model evaluation <code>:mode
 <p>
 The task <code>:task29</code> is defined on the dataset (<code>credit-a</code>) and on the evaluation specification <code>:evaluationSpecification1</code>.
 The evaluation specification <code>:evaluationSpecification1</code> has parts: the evaluation procedure <code>:TenFoldCrossValidation</code> and the evaluation measure<code>:predictiveAccuracy</code>.
-</p>        
+</p>
 
 <div id="mlschema-example1-figure" style="text-align: center;" class="figure">
     <img src="ML-Schema-Example1.png" style="width: 100%; min-width: 25em; max-width: 60em" alt="An example concerning ML Run.">
-    <div class="figcaption"><a href="#mlschema-example1-figure">Figure 2</a>. 
+    <div class="figcaption"><a href="#mlschema-example1-figure">Figure 2</a>.
       An example illustrating a single run of an ML algorithm implementation.<br>
     </div>
 </div>
@@ -750,18 +753,18 @@ The evaluation specification <code>:evaluationSpecification1</code> has parts: t
 
 <p>
 Secondly, we illustrate ML schema with an example describing ML study (<code>:study1</code>) and the corresponding dataset <code>:mtl_dataset</code>, providing reference to a publication (<code>:article1</code>), and acknowledging the funding body (see Fig. 3) .
-This example refers to the article “Multi-Task Learning with a Natural Metric for Quantitative Structure Activity Relationship Learning” by Sadawi et al which reports on the ML study carried out within the Meta-QSAR project (<code>:meta-qsar_project</code>) funded by <code>:EPSRC</code> (<code>:grant1</code> with number EP/K030582/1). 
-The referred dataset is freely available in OpenML. 
+This example refers to the article “Multi-Task Learning with a Natural Metric for Quantitative Structure Activity Relationship Learning” by Sadawi et al which reports on the ML study carried out within the Meta-QSAR project (<code>:meta-qsar_project</code>) funded by <code>:EPSRC</code> (<code>:grant1</code> with number EP/K030582/1).
+The referred dataset is freely available in OpenML.
 </p>
 
 <div id="mlschema-core-figure" style="text-align: center;" class="figure">
     <img src="ML-Schema-Example2.png" style="width: 100%; min-width: 25em; max-width: 60em" alt="An example concerning ML study">
-    <div class="figcaption"><a href="#mlschema-example2-figure">Figure 3</a>. 
+    <div class="figcaption"><a href="#mlschema-example2-figure">Figure 3</a>.
       An example illustrating ML study.<br>
     </div>
 </div>
 
-                
+
 <div class="example"><div class="example-title"><span>Example 2</span></div><pre class="example">
 @prefix : &lt;http://example.org#&gt; .
 @prefix mls: &lt;http://www.w3.org/ns/mls#&gt; .
@@ -770,7 +773,7 @@ The referred dataset is freely available in OpenML.
 @prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 @prefix dc:  &lt;http://purl.org/dc/elements/1.1/>&gt; .
 @prefix frapo: &lt;http://purl.org/cerif/frapo/&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; . 
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 
 
 dc:BibliographicResource rdf:type owl:Class .
@@ -780,19 +783,19 @@ mls:Study rdfs:subClassOf frapo:Investigation .
 
 :EPSRC rdf:type frapo:FundingAgency ,
                 owl:NamedIndividual ;
-       
+
        frapo:awards :grant1 .
 
 :article1 rdf:type dc:BibliographicResource ,
                    owl:NamedIndividual ;
-          
+
           rdfs:label "Article: Multi Task Learning with a Natural Metric for Quantitative Structure Activity Relationship Learning" .
 
 :grant1 rdf:type frapo:Grant ,
                  owl:NamedIndividual ;
-        
+
         frapo:hasGrantNumber "EP/K030582/1" ;
-        
+
         frapo:funds :meta-qsar_project .
 
 
@@ -804,16 +807,16 @@ mls:Study rdfs:subClassOf frapo:Investigation .
 
              dc:licence :CC_by_3.0 ;
              dc:dateSubmitted "06/09/15" ;
-             dc:source "http://www.openml.org/s/3" . 
+             dc:source "http://www.openml.org/s/3" .
 
 :CC_by_3.0 rdf:type owl:NamedIndividual ,
-                    dc:LicenceDocument . 
+                    dc:LicenceDocument .
 
 :study1 rdf:type owl:NamedIndividual ,
                 mls:Study ;
-        
+
         frapo:enables :meta-qsar_project ;
-        
+
         frapo:hasOutput :mtl_dataset .
 
 </pre></div>
@@ -857,8 +860,8 @@ mls:Study rdfs:subClassOf frapo:Investigation .
                              mls:Algorithm .
 </pre></div>
 
-<div id="d4e160" class="entity"><a name="http://www.w3.org/ns/mls#Data"></a><h3>data<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Data</p><div class="comment"><span class="markdown">Data is a data item composed of data examples and it may be of a various level of granularity and complexity. 
-With regard to granularity, it can be a whole dataset (for instance, one main table and possibly other tables), or only a single table, or only a feature (e.g., a column of a table), or only an instance (e.g., row of a table), or a single feature-value pair. 
+<div id="d4e160" class="entity"><a name="http://www.w3.org/ns/mls#Data"></a><h3>data<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#Data</p><div class="comment"><span class="markdown">Data is a data item composed of data examples and it may be of a various level of granularity and complexity.
+With regard to granularity, it can be a whole dataset (for instance, one main table and possibly other tables), or only a single table, or only a feature (e.g., a column of a table), or only an instance (e.g., row of a table), or a single feature-value pair.
 With regard to complexity, data examples are characterized by their datatype, which may be arbitrarily complex (e.g., instead of a table it can be an arbitrary graph).</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><span class="dotted" title="http://www.w3.org/ns/mls#hasQuality">has quality</span><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e183" title="http://www.w3.org/ns/mls#DataCharacteristic">data characteristic</a><sup title="class" class="type-c">c</sup></dd><dt>has sub-classes</dt><dd><a href="#d4e197" title="http://www.w3.org/ns/mls#Dataset">dataset</a><sup title="class" class="type-c">c</sup>, <a href="#d4e295" title="http://www.w3.org/ns/mls#Feature">feature</a><sup title="class" class="type-c">c</sup></dd></dl></div>
 
 <div id="d4e183" class="entity"><a name="http://www.w3.org/ns/mls#DataCharacteristic"></a><h3>data characteristic<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#DataCharacteristic</p>
@@ -876,7 +879,7 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 
 :credit-a rdf:type owl:NamedIndividual ,
                    mls:Dataset ;
-          
+
           mls:hasQuality :decisionStumpAUC ,
                          :defaultAccuracy ,
                          :numberOfInstances ,
@@ -901,7 +904,7 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 
 :decisionStumpAUC rdf:type owl:NamedIndividual ,
                        mls:DatasetCharacteristic .
-                      
+
 :defaultAccuracy rdf:type owl:NamedIndividual ,
                        mls:DatasetCharacteristic .
 
@@ -922,7 +925,7 @@ Such characteristics are often statistical ones (e.g., the number of instances o
                                  mls:EvaluationProcedure .
 </pre></div>
 
-                                 
+
 <div id="d4e238" class="entity"><a name="http://www.w3.org/ns/mls#EvaluationSpecification"></a><h3>evaluation specification<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3><p><strong>IRI:</strong> http://www.w3.org/ns/mls#EvaluationSpecification</p><div class="comment"><span class="markdown">EvaluationProcedure is a technique to evaluate machine learning models. Examples are cross-validation and leave-one-out.</span></div><dl class="description"><dt>has super-classes</dt><dd><span class="dotted" title="http://www.w3.org/ns/mls#InformationEntity">information entity</span><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e106" title="http://www.w3.org/ns/mls#hasPart">hasPart</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e225" title="http://www.w3.org/ns/mls#EvaluationProcedure">evaluation procedure</a><sup title="class" class="type-c">c</sup></dd><dd><a href="#d4e106" title="http://www.w3.org/ns/mls#hasPart">hasPart</a><sup title="object property" class="type-op">op</sup> <span class="logic">some</span> <a href="#d4e211" title="http://www.w3.org/ns/mls#EvaluationMeasure">evaluation measure</a><sup title="class" class="type-c">c</sup></dd></dl></div>
 <div class="example"><div class="example-title"><span>Example</span></div><pre class="example">
 @prefix : &lt;http://example.org#&gt; .
@@ -933,9 +936,9 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 
 :evaluationSpecification1 rdf:type owl:NamedIndividual ,
                                    mls:EvaluationSpecification ;
-                                   
-                          mls:defines :task29 ;         
-                          
+
+                          mls:defines :task29 ;
+
                           mls:hasPart :TenFoldCrossValidation ,
                                       :predictiveAccuracy .
 
@@ -964,7 +967,7 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 
 :wekaLogisticOutputDebugInfo rdf:type owl:NamedIndividual ,
                                       mls:HyperParameter .
-                                      
+
 :wekaLogisticR rdf:type owl:NamedIndividual ,
                         mls:HyperParameter .
 
@@ -982,16 +985,16 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 
 :wekaLogisticMSetting29 rdf:type owl:NamedIndividual ,
                                  mls:HyperParameterSetting ;
-                        
+
                         mls:specifiedBy :wekaLogisticM ;
-                        
+
                         mls:hasValue -1 .
-                        
+
 :wekaLogisticRSetting29 rdf:type owl:NamedIndividual ,
                                  mls:HyperParameterSetting ;
-                        
+
                         mls:specifiedBy :wekaLogisticR ;
-                        
+
                         mls:hasValue "1.0E-8"^^xsd:float .
 
 </pre></div>
@@ -1007,13 +1010,13 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 
 :wekaLogistic rdf:type owl:NamedIndividual ,
                        mls:Implementation ;
-              
+
               mls:hasHyperParameter :wekaLogisticC ,
                                     :wekaLogisticDoNotCheckCapabilities ,
                                     :wekaLogisticM ,
                                     :wekaLogisticOutputDebugInfo ,
                                     :wekaLogisticR ;
-              
+
               mls:implements :logisticRegression .
 
 </pre></div>
@@ -1046,9 +1049,9 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 
 :modelEvaluation100241 rdf:type owl:NamedIndividual ,
                                 mls:ModelEvaluation ;
-                       
+
                        mls:specifiedBy :predictiveAccuracy ;
-                       
+
                        mls:hasValue 0.8478 .
 </pre></div>
 
@@ -1069,17 +1072,17 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 
 
 :run100241 rdf:type owl:NamedIndividual ,
-                    mls:Run 
-                    
+                    mls:Run
+
            mls:executes :wekaLogistic ;
-           
-           mls:hasInput :credit-a , 
+
+           mls:hasInput :credit-a ,
                         :wekaLogisticMSetting29 ,
                         :wekaLogisticRSetting29 ;
 
            mls:hasOutput :modelEvaluation100241 ,
                          :wekaLogisticModel100241 ;
-           
+
            mls:realizes :task29 .
 
 </pre></div>
@@ -1093,7 +1096,7 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 
 
-:weka rdf:type mls:Software, 
+:weka rdf:type mls:Software,
 	      mls:hasPart :wekaLogistic.
 
 
@@ -1111,7 +1114,7 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 
 :task29 rdf:type owl:NamedIndividual ,
                  mls:Task ;
-        
+
         mls:definedOn :credit-a .
 
 </pre></div>
@@ -1179,133 +1182,133 @@ ontologies and vocabularies</caption><!-- Table 1-->
 <td>Task</td>
 <td>Data mining task</td>
 <td>DM-Task</td>
-<td></td>
+<td>Task</td>
 <td>mexcore:ExperimentConfiguration</td>
 </tr>
 <tr>
 <td>Algorithm</td>
 <td>Data mining algorithm</td>
 <td>DM-Algorithm</td>
-<td></td>
+<td>Algorithm</td>
 <td>mexalgo:Algorithm</td>
 </tr>
 <tr>
 <td>Software</td>
 <td>Data mining software</td>
 <td>DM-Software</td>
-<td></td>
+<td>N/A</td>
 <td>mexalgo:Tool</td>
 </tr>
 <tr>
 <td>Implementation</td>
 <td>Data mining algorithm implementation</td>
 <td>DM-Operator</td>
-<td></td>
+<td>Algorithm implementation</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>HyperParameter</td>
 <td>Parameter</td>
 <td>Parameter</td>
-<td></td>
+<td>Parameter</td>
 <td>mexalgo:HyperParameter</td>
 </tr>
 <tr>
 <td>HyperParameterSetting</td>
 <td>Parameter setting</td>
 <td>OpParameterSetting</td>
-<td></td>
+<td>Parameter setting</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>Study</td>
 <td>Investigation</td>
 <td>N/A</td>
-<td></td>
+<td>N/A</td>
 <td>mexcore:Experiment</td>
 </tr>
 <tr>
 <td>Experiment</td>
 <td>N/A</td>
 <td>DM-Experiment</td>
-<td></td>
+<td>Experiment</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>Run</td>
 <td>Data mining algorithm execution</td>
 <td>DM-Operation</td>
-<td></td>
+<td>Algorithm execution</td>
 <td>mexcore:Execution</td>
 </tr>
 <tr>
 <td>Data</td>
 <td>Data item</td>
 <td>DM-Data</td>
-<td></td>
+<td>N/A</td>
 <td>mexcore:Example</td>
 </tr>
 <tr>
 <td>Dataset</td>
 <td>DM dataset</td>
 <td>DataSet</td>
-<td></td>
+<td>Dataset</td>
 <td>mexcore:Dataset</td>
 </tr>
 <tr>
 <td>Feature</td>
 <td>N/A</td>
 <td>Feature</td>
-<td></td>
+<td>N/A</td>
 <td>mexcore:Feature</td>
 </tr>
 <tr>
 <td>DataCharacteristic</td>
 <td>Data specification</td>
 <td>DataCharacteristic</td>
-<td></td>
+<td>Dataset specification</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>DatasetCharacteristic</td>
 <td>Dataset specification</td>
 <td>DataSetCharacteristic</td>
-<td></td>
+<td>Data quality</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>FeatureCharacteristic</td>
 <td>Feature specification</td>
 <td>FeatureCharacteristic</td>
-<td></td>
+<td>N/A</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>Model</td>
 <td>Generalization</td>
 <td>DM-Hypothesis (DM-Model / DM-PatternSet)</td>
-<td></td>
+<td>Model</td>
 <td>mexcore:Model</td>
 </tr>
 <tr>
 <td>ModelCharacteristic</td>
 <td>Generalization quality</td>
 <td>HypothesisCharacteristic</td>
-<td></td>
+<td>Model Structure, Parameter, ...</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>ModelEvaluation</td>
 <td>Generalization evaluation</td>
 <td></td>
-<td></td>
+<td>Evaluation</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>EvaluationMeasure</td>
 <td>Evaluation datum</td>
 <td>EvaluationFunction</td>
-<td></td>
+<td>Evaluation measure</td>
 <td>mexperf:PerformanceMeasure</td>
 </tr>
 <tr>
@@ -1319,7 +1322,7 @@ ontologies and vocabularies</caption><!-- Table 1-->
 <td>EvaluationProcedure</td>
 <td>Evaluation algorithm</td>
 <td>ModelEvaluationAlgorithm</td>
-<td></td>
+<td>Performance Estimation</td>
 <td>N/A</td>
 </tr>
 </tbody>
@@ -1355,11 +1358,13 @@ algorithm</span>. The implementation layer in general contains
 qualities and
 entities that are realized in a process, such as parameters and
 implementations of algorithms. The application layer contains
-processual classes, such as the execution of the data mining algorithm.
-These layers were preserved in ontologies that build on OntoDM, such as
-Expose&nbsp;<b>[<cite><a class="bibref" rel="biblioentry" href="#bib-Expose">EXPOSE</a></cite>]</b>,
-which underlies the OpenML
-platform.<br>
+processual classes, such as the execution of the data mining algorithm.</p>
+</div>
+<h2>The Exposé ontology</h2>
+<p>The main goal of <b>[<cite><a class="bibref" rel="biblioentry" href="#bib-Expose">EXPOSE</a></cite>]</b> is to describe
+  (and reason about) machine learning experiments. It is built on top of OntoDM, as well as top-level ontologies from bio-informatics.
+  It is currently used in OpenML, as a way to structure data (e.g. database design) and share data (APIs). MLSchema will be used to
+  export all OpenML data as linked open data (in RDF).<br>
 </p>
 </div>
 <div>
@@ -1391,7 +1396,7 @@ outcomes.&nbsp;</p>
 <h2><span class="secno">4. </span>Acknowledgements</h2>
 This section is non-normative.
 
-The editors of this document thank the developers of the tools that were used to create the ML Schema and parts of this document. 
+The editors of this document thank the developers of the tools that were used to create the ML Schema and parts of this document.
 Those tools were of major help for developing ML Schema as well as the documentation.
 
 <ul>
@@ -1505,4 +1510,3 @@ new way to share, organize and learn from experiments
 
 </body>
 </html>
-
