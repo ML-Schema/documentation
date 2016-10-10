@@ -503,10 +503,10 @@ Another goal of ML Schema related to interoperability and reproducible research 
        <ul>
         <li><a href="http://www.ontodm.com">Onto-DM</a>has been designed to provide generic representations of principle entities in the area of data mining.</li>
         <li><a href="http://purl.org/dmop">DMOP</a> has been developed with a purpose to support meta-mining, i.e. meta-learning from the full ML process.</li>
-        <li><a href="http://www.openml.org/downloads/expose.owl">Expose</a></li>
+        <li><a href="http://www.openml.org/downloads/expose.owl">Expose</a> is designed to describe (and reason about) machine learning experiments. It is built on top of OntoDM, and underlies OpenML, a collaboration and meta-learning platform for machine learning. </li>
         <li><a href="http://mex.aksw.org/">MEX Vocabulary</a> (mex-core, mex-algo and mex-perf) has been designed to tackle the problem of managing machine learning outcomes and sharing provenance information particularly on the basic machine learning iterations in a lightweight format.</li>
        </ul>
-        The gap can be further significantly reduced by achieving interoperability among state-of-the-art (SOTA) schemata of those resources (Figure 1: item 5) i.e. achieving the <b>horizontal interoperability </b> (Figure 1: item 6). 
+        The gap can be further significantly reduced by achieving interoperability among state-of-the-art (SOTA) schemata of those resources (Figure 1: item 5) i.e. achieving the <b>horizontal interoperability </b> (Figure 1: item 6).
         Therefore, different groups of researchers could exchange SOTA metadata files in a transparent manner, e.g.: from OntoDM and MEX (<code>MLSchema.Schema data = mlschema.convert('myfile.ttl', MLSchema.Ontology.OntoDM, MLSchema.Ontology.MEX)</code>).
         <div align="center">
             <figure>
@@ -758,7 +758,7 @@ This example refers to the article “Multi-Task Learning with a Natural Metric 
 The referred dataset is freely available in OpenML.
 </p>
 <p>
-Exposing such metadata may be of use for possible collaborators who may wish to analyse research networks and try to assess the 'trustwothiness' of what is published in the literature. 
+Exposing such metadata may be of use for possible collaborators who may wish to analyse research networks and try to assess the 'trustwothiness' of what is published in the literature.
 Such information that a study is done within a funded project, may increase their level of trust to the published results.
 </p>
 
@@ -1335,7 +1335,7 @@ ontologies and vocabularies</caption><!-- Table 1-->
 </div>
 <em></em>
 <div>
-<h2>The OntoDM-core ontology and the Expose ontology</h2>
+<h2>The OntoDM-core ontology</h2>
 <p>For the domain of data mining there are several developed
 ontologies, with the aim of providing formal descriptions of domain
 entities. One of the proposed ontologies is the OntoDM-core
@@ -1366,10 +1366,7 @@ implementations of algorithms. The application layer contains
 processual classes, such as the execution of the data mining algorithm.</p>
 </div>
 <h2>The Exposé ontology</h2>
-<p>The main goal of <b>[<cite><a class="bibref" rel="biblioentry" href="#bib-Expose">EXPOSE</a></cite>]</b> is to describe
-  (and reason about) machine learning experiments. It is built on top of OntoDM, as well as top-level ontologies from bio-informatics.
-  It is currently used in OpenML, as a way to structure data (e.g. database design) and share data (APIs). MLSchema will be used to
-  export all OpenML data as linked open data (in RDF).<br>
+<p>
 </p>
 </div>
 <div>
