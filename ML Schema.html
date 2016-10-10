@@ -406,6 +406,9 @@ table.exceptions table {
     border-collapse:    collapse;
     width:  100%;
 }
+
+
+
 </style>
 <link href="cg-draft.css" rel="stylesheet" type="text/css" charset="utf-8" />
 
@@ -440,7 +443,7 @@ It can be specialized to create new classes and properties. It can be mapped to 
 <p style="text-align: center;">The namespace for ML Schema terms is <span class="repeated">http://www.w3.org/ns/mls#</span>.
 </p>
 
-<p style="text-align: center;">The OWL encoding of the ML Schema is available <a href="https://github.com/ML-Schema/core/blob/master/MLSchema.ttl">here</a>.
+<p style="text-align: center;">The OWL encoding of the ML Schema is available <a href="https://raw.githubusercontent.com/ML-Schema/core/master/MLSchema.ttl">here</a>.
 </p>
 
 </section>
@@ -449,19 +452,24 @@ It can be specialized to create new classes and properties. It can be mapped to 
 
 <p><em>This specification was published by the <a href="http://www.w3.org/community/grouphome/">Machine Learning Schema Community Group</a>. It is not a W3C Standard nor is it on the W3C Standards Track. Please note that under the <a href="http://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a> there is a limited opt-out and other conditions apply. Learn more about <a href="http://www.w3.org/community/">W3C Community and Business Groups</a>.</em></p>
 
-<p>In ipsum lectus, gravida id egestas vel, auctor quis ipsum. Nam congue nisi ullamcorper elit suscipit a accumsan sapien ullamcorper. Morbi urna mauris, tempus at bibendum eget, iaculis in nunc. Aliquam aliquam orci nec enim laoreet porta. Nulla libero mi, consequat vel ultricies ultricies, ornare fermentum lorem. Praesent tincidunt, nisl at suscipit molestie, justo neque tempus dui, eget porttitor libero leo nec ligula. </p>
-
 <h2 class="introductory">Table of Contents</h2>
 
 <ol>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#overview">The ML Schema description</a></li>
-<ol>
-<li><a href="#classes">Classes</a></li>
-<li><a href="#objectproperties">Object Properties</a></li>
-<li><a href="#annotationproperties">Annotation Properties</a></li>
-</ol>
-<li><a href="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#introduction">Introduction</a></li>
+   <ol>
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#notations">Notational Conventions</a></li>
+    </ol>
+   <li><a href="#overview">The ML Schema description</a></li>
+   <ol>
+      <li><a href="#classes">Classes</a></li>
+      <li><a href="#objectproperties">Object Properties</a></li>
+      <li><a href="#annotationproperties">Annotation Properties</a></li>
+   </ol>
+   <li><a href="#mapping">The relationship of ML Schema to&nbsp;other proposed ontologies and
+vocabularies for the domain of machine learning and data mining
+</a></li>
+   <li><a href="#acknowledgements">Acknowledgements</a></li>
 </ol>
 
 <!-- OddPage -->
@@ -473,7 +481,7 @@ The schema can be used to represent the algorithms, the machine learning tasks t
 </p>
 <p>
 This lightweight schema may be used as a basis for ontology development projects, markup languages and data exchange standards.
-In particular, it aims to align existing machine learning ontologies (see Section XXX) and to support development of more specific ontologies with specific purposes/applications.
+In particular, it aims to align existing machine learning ontologies and to support development of more specific ontologies with specific purposes/applications.
 The main purpose is to increase interoperability by preventing a proliferation of incompatible machine learning ontologies as well as to provide a high-level standard to represent machine learning data. Thus, this scenario leads to a more representative and comprehensive ontology derived from existing state-of-the-art ML schemas.
 </p>
 
@@ -486,7 +494,7 @@ Another goal of ML Schema related to interoperability and reproducible research 
 
 </p>
 </div>
-   <div id="notations" class="section">
+   <div id="benefits" class="section">
        <h3><span class="secno">1.1 </span>Benefits</h3>
        Despite recent efforts to achieve a high level of interoperability of Machine Learning (ML) experiments we still run into problems created due to the existence of different ML platforms: each of those have a specific conceptualization or schema for representing data and metadata (Fig1: itens 3 and 4: <b>vertical interoperability</b>). This scenario leads to an extra coding-effort (Fig1: item 2) to achieve both the desired interoperability and a better provenance level as well as a more automatized environment for obtaining the generated results.
 
@@ -494,16 +502,16 @@ Another goal of ML Schema related to interoperability and reproducible research 
        To reduce the gap, ML vocabularies and ontologies have been proposed (Fig1: item 5).
        <ul>
         <li><a href="http://google.com/">Onto-DM</a></li>
-        <li><a href="http://google.com/">DMOP</a></li>
+        <li><a href="http://purl.org/dmop">DMOP has been developed with a purpose to support meta-mining, i.e. meta-learning from the full ML process.</a></li>
         <li><a href="http://www.openml.org/downloads/expose.owl">Expose</a> is designed to describe (and reason about) machine learning experiments. It is built on top of OntoDM, and underlies OpenML, a collaboration and meta-learning platform for machine learning. </li>
         <li><a href="http://mex.aksw.org/">MEX Vocabulary</a> (mex-core, mex-algo and mex-perf) has been designed to tackle the problem of managing machine learning outcomes and sharing provenance information particularly on the basic machine learning iterations in a lightweight format.</li>
        </ul>
-
-        However, we argue it still can significantly be reduced by aligning those (Fig1: item 5) in order to achieve also interoperability among state-of-the-art (SOTA) schemata, i.e., to achieve the <b>horizontal interoperability</b> (Fig1: item 6). Therefore, different groups of researchers could exchange SOTA metadata files in a transparent manner, e.g.: from OntoDM and MEX (<code>MLSchema.Schema data = mlschema.convert('myfile.ttl', MLSchema.Ontology.OntoDM, MLSchema.Ontology.MEX)</code>).
+        The gap can be further significantly reduced by achieving interoperability among state-of-the-art (SOTA) schemata of those resources (Figure 1: item 5) i.e. achieving the <b>horizontal interoperability </b> (Figure 1: item 6).
+        Therefore, different groups of researchers could exchange SOTA metadata files in a transparent manner, e.g.: from OntoDM and MEX (<code>MLSchema.Schema data = mlschema.convert('myfile.ttl', MLSchema.Ontology.OntoDM, MLSchema.Ontology.MEX)</code>).
         <div align="center">
             <figure>
                 <img align="center" src="metalevel.png" height="40%" width="40%" alt="Vertical and Horizontal Interoperability across ML Environments">
-                <figcaption>Fig.1 - Vertical and Horizontal Interoperability across ML Environments.</figcaption>
+                <figcaption>Figure 1 - Vertical and Horizontal Interoperability across ML Environments.</figcaption>
             </figure>
         </div>
         <p>Besides a higher level of interoperability, it direct benefits ML Ecosystems (e.g.: <a href="http://www.openml.org/">OpenML</a>) and ML Metadata Repositories (e.g.: <a href="http://wasota.aksw.org/">WASOTA</a>) which can rely on a more representative standard in their architecures.
@@ -515,19 +523,14 @@ Another goal of ML Schema related to interoperability and reproducible research 
 
 
    <div id="notations" class="section">
-       <h3><span class="secno">1.2 </span>Document outline</h3>
-
-   </div>
-
-   <div id="notations" class="section">
-       <h3><span class="secno">1.3 </span>Notational Conventions</h3>
+       <h3><span class="secno">1.2 </span>Notational Conventions</h3>
 
        Throughout this document, we use <a href="http://www.w3.org/TR/turtle/">Turtle RDF Syntax</a> to express examples showing the use of the schema.
 
    </div>
 
    <div class="informative section" id="namespaces">
-         <h3><span class="secno">1.4 </span>Namespaces</h3><p><em>This section is non-normative.</em></p>
+         <h3><span class="secno">1.3 </span>Namespaces</h3><p><em>This section is non-normative.</em></p>
          <p>The following namespace prefixes are used throughout this document.
 
          </p><div style="text-align: left;">
@@ -540,9 +543,6 @@ Another goal of ML Schema related to interoperability and reproducible research 
             <tr><td><a>xsd</a></td><td>http://www.w3.org/2000/10/XMLSchema#</td><td>XML Schema Namespace [<cite><a class="bibref" rel="biblioentry" href="#bib-XMLSCHEMA11-2">XMLSCHEMA11-2</a></cite>]</td></tr>
 
             <tr><td><a>owl</a></td><td>http://www.w3.org/2002/07/owl#</td><td>The OWL namespace [<cite><a class="bibref" rel="biblioentry" href="#bib-OWL2-OVERVIEW">OWL2-OVERVIEW</a></cite>]</td></tr>
-
-            <tr><td><a>mls</a></td><td>http://www.w3.org/ns/mls#</td>
-                <td>The ML Schema namespace </td></tr>
 
             <tr><td><a>mls</a></td><td>http://www.w3.org/ns/mls#</td>
                 <td>The ML Schema namespace </td></tr>
@@ -575,7 +575,7 @@ Arrows without filled heads represent properties, arrows with empty heads repres
 
 <div id="mlschema-core-figure" style="text-align: center;" class="figure">
     <img src="ML-Schema.png" style="width: 100%; min-width: 25em; max-width: 60em" alt="ML Schema core terms">
-    <div class="figcaption"><a href="#mlschema-core-figure">Figure 1</a>.
+    <div class="figcaption"><a href="#mlschema-core-figure">Figure 2</a>.
       The ML Schema core vocabulary.<br>
       The diagram depicts Information Entities as yellow boxes, Processes as blue boxes, and Qualities as green boxes.<br>
     </div>
@@ -745,8 +745,9 @@ The evaluation specification <code>:evaluationSpecification1</code> has parts: t
 
 <div id="mlschema-example1-figure" style="text-align: center;" class="figure">
     <img src="ML-Schema-Example1.png" style="width: 100%; min-width: 25em; max-width: 60em" alt="An example concerning ML Run.">
-    <div class="figcaption"><a href="#mlschema-example1-figure">Figure 2</a>.
+    <div class="figcaption"><a href="#mlschema-example1-figure">Figure 3</a>.
       An example illustrating a single run of an ML algorithm implementation.<br>
+      The diagram depicts Information Entities as yellow boxes, Processes as blue boxes, and Material Entities as red boxes.<br>
     </div>
 </div>
 
@@ -756,10 +757,14 @@ Secondly, we illustrate ML schema with an example describing ML study (<code>:st
 This example refers to the article “Multi-Task Learning with a Natural Metric for Quantitative Structure Activity Relationship Learning” by Sadawi et al which reports on the ML study carried out within the Meta-QSAR project (<code>:meta-qsar_project</code>) funded by <code>:EPSRC</code> (<code>:grant1</code> with number EP/K030582/1).
 The referred dataset is freely available in OpenML.
 </p>
+<p>
+Exposing such metadata may be of use for possible collaborators who may wish to analyse research networks and try to assess the 'trustwothiness' of what is published in the literature.
+Such information that a study is done within a funded project, may increase their level of trust to the published results.
+</p>
 
 <div id="mlschema-core-figure" style="text-align: center;" class="figure">
     <img src="ML-Schema-Example2.png" style="width: 100%; min-width: 25em; max-width: 60em" alt="An example concerning ML study">
-    <div class="figcaption"><a href="#mlschema-example2-figure">Figure 3</a>.
+    <div class="figcaption"><a href="#mlschema-example2-figure">Figure 4</a>.
       An example illustrating ML study.<br>
     </div>
 </div>
@@ -1144,7 +1149,7 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 
 <div id="mapping">
 <h2><span class="secno">3.&nbsp;</span>The
-relationship of MLSchema to&nbsp;other proposed ontologies and
+relationship of ML Schema to&nbsp;other proposed ontologies and
 vocabularies
 for the domain of machine learning and data mining</h2>
 In this section, we present the relationship of the MLSchema to other
@@ -1154,7 +1159,7 @@ from, initially independent, research&nbsp; of&nbsp;
 several&nbsp; groups&nbsp; on&nbsp; modeling&nbsp;
 the&nbsp; machine&nbsp; learning/data&nbsp;
 mining&nbsp; domain.&nbsp; Due to this the classes and
-relations present in the MLSchema&nbsp; re-appear&nbsp;
+relations present in the ML Schema&nbsp; re-appear&nbsp;
 in&nbsp; the&nbsp; current ML/DM&nbsp; ontologies and
 vocabularies. In Table 2, we present the mapping between the terms
 present in the MLSchema and the current ML/DM ontologies and
@@ -1164,11 +1169,11 @@ vocabularies.<br>
 <div style="text-align: left;">
 <table class="thinborder" style="margin-left: auto; margin-right: auto;">
 <caption id="namespace-table"><a href="#namespace-table">Table 1</a>: Mapping between
-the terms between &nbsp;the MLSchema and the different ML/DM
+the terms between &nbsp;the ML Schema and the different ML/DM
 ontologies and vocabularies</caption><!-- Table 1-->
 <tbody>
 <tr>
-<td><a><b>Term from MLSchema</b></a></td>
+<td><a><b>Term from ML Schema</b></a></td>
 <td><b>OntoDM-core [<cite><a class="bibref" rel="biblioentry" href="#bib-OntoDM-core">OntoDM-core</a></cite>]
 </b></td>
 <td><b>DMOP [<cite><a class="bibref" rel="biblioentry" href="#bib-DMOP">DMOP</a></cite>]
