@@ -418,7 +418,7 @@ table.exceptions table {
   <div class="head"><p><a href="http://www.w3.org/"><img width="72" height="48" src="http://www.w3.org/Icons/w3c_home" alt="W3C" /></a>
   <a href="http://www.w3.org/ns/mls#"><img style="float:right;margin: 0 0 10px 10px;display:block" width="120" src="MLSchemaLogo.png" alt="MLS" /></a>
   </p>
-  <h1 property="dcterms:title" class="title" id="title">ML Schema Core Specification</h1><h2 property="bibo:subtitle" id="subtitle">Release Day Month 2016</h2>
+  <h1 property="dcterms:title" class="title" id="title">ML Schema Core Specification</h1><h2 property="bibo:subtitle" id="subtitle">Release 10 October 2016</h2>
 <dl>
 <dt>Latest version</dt>
 <dd><a href="http://www.w3.org/2016/10/mls/">http://www.w3.org/2016/10/mls/</a></dd>
@@ -458,23 +458,22 @@ It can be specialized to create new classes and properties. It can be mapped to 
 
 <h2 class="introductory">Table of Contents</h2>
 
-<ol>
-  <li><a href="#introduction">Introduction</a></li>
-   <ol>
-      <li><a href="#benefits">Benefits</a></li>
-      <li><a href="#notations">Notational Conventions</a></li>
-    </ol>
-   <li><a href="#overview">The ML Schema description</a></li>
-   <ol>
-      <li><a href="#classes">Classes</a></li>
-      <li><a href="#objectproperties">Object Properties</a></li>
-      <li><a href="#annotationproperties">Annotation Properties</a></li>
-   </ol>
-   <li><a href="#mapping">The relationship of ML Schema to&nbsp;other proposed ontologies and
-vocabularies for the domain of machine learning and data mining
+<ul style="list-style-type:none">
+  <li><a href="#introduction">1. Introduction</a></li>
+   <ul style="list-style-type:none">
+      <li><a href="#benefits">1.1 Benefits</a></li>
+      <li><a href="#notations">1.2 Notational Conventions</a></li>
+    </ul>
+   <li><a href="#overview">2. The ML Schema description</a></li>
+   <ul style="list-style-type:none">
+      <li><a href="#classes">2.1 Classes</a></li>
+      <li><a href="#objectproperties">2.2. Object Properties</a></li>
+      <li><a href="#annotationproperties">2.3 Annotation Properties</a></li>
+   </ul>
+   <li><a href="#mapping">3. The relationship of ML Schema to&nbsp;other machine learning and data mining ontologies
 </a></li>
-   <li><a href="#acknowledgements">Acknowledgements</a></li>
-</ol>
+   <li><a href="#acknowledgements">4. Acknowledgements</a></li>
+</ul>
 
 <!-- OddPage -->
 <div id="introduction">
@@ -502,8 +501,8 @@ Another goal of ML Schema related to interoperability and reproducible research 
        <h3><span class="secno">1.1 </span>Benefits</h3>
        Despite recent efforts to achieve a high level of interoperability of Machine Learning (ML) experiments we still run into problems created due to the existence of different ML platforms: each of those have a specific conceptualization or schema for representing data and metadata (Fig1: itens 3 and 4: <b>vertical interoperability</b>). This scenario leads to an extra coding-effort (Fig1: item 2) to achieve both the desired interoperability and a better provenance level as well as a more automatized environment for obtaining the generated results.
 
-       <!-- TODO: Please add 1 very short sentence here about your ontology -->
-       To reduce the gap, ML vocabularies and ontologies have been proposed (Fig1: item 5).
+       
+       To reduce the gap, ML vocabularies and ontologies have been proposed (Figure 1: item 5).
        <ul>
         <li><a href="http://www.ontodm.com">Onto-DM</a> has been designed to provide generic representations of principle entities in the area of data mining.</li>
         <li><a href="http://purl.org/dmop">DMOP</a> has been developed with a purpose to support meta-mining, i.e. meta-learning from the full ML process.</li>
@@ -512,10 +511,10 @@ Another goal of ML Schema related to interoperability and reproducible research 
        </ul>
         The gap can be further significantly reduced by achieving interoperability among state-of-the-art (SOTA) schemata of those resources (Figure 1: item 5) i.e. achieving the <b>horizontal interoperability </b> (Figure 1: item 6).
         Therefore, different groups of researchers could exchange SOTA metadata files in a transparent manner, e.g.: from OntoDM and MEX (<code>MLSchema.Schema data = mlschema.convert('myfile.ttl', MLSchema.Ontology.OntoDM, MLSchema.Ontology.MEX)</code>).
-        <div align="center">
+        <div id="mlschema-interoperability"  align="center" class="figure">
             <figure>
-                <img align="center" src="metalevel.png" height="40%" width="40%" alt="Vertical and Horizontal Interoperability across ML Environments">
-                <figcaption>Figure 1 - Vertical and Horizontal Interoperability across ML Environments.</figcaption>
+                <img align="center" src="metalevel.png" height="50%" width="50%" alt="Vertical and Horizontal Interoperability across ML Environments">
+                <figcaption><a href="#mlschema-interoperability">Figure 1</a> - Vertical and Horizontal Interoperability across ML Environments.</figcaption>
             </figure>
         </div>
         <p>Besides a higher level of interoperability, it direct benefits ML Ecosystems (e.g.: <a href="http://www.openml.org/">OpenML</a>) and ML Metadata Repositories (e.g.: <a href="http://wasota.aksw.org/">WASOTA</a>) which can rely on a more representative standard in their architecures.
@@ -555,7 +554,7 @@ Another goal of ML Schema related to interoperability and reproducible research 
                 <td>Funding, Research Administration and Projects Ontology</td></tr>
 
             <tr><td><a>dc</a></td><td>http://purl.org/dc/elements/1.1/</td>
-                <td>Dublin Core</td></tr>
+                <td>Dublin Core [<cite><a class="bibref" rel="biblioentry" href="#bib-DUBLIN-CORE">DUBLIN-CORE</a></cite>]</td></tr>
 
             <tr><td><a>foaf</a></td><td>http://xmlns.com/foaf/0.1/</td>
                 <td>FOAF Vocabulary Specification</td></tr>
@@ -573,12 +572,12 @@ Another goal of ML Schema related to interoperability and reproducible research 
 
 
 The following diagram depicts the core ML Schema. Boxes represent classes of the schema.
-Arrows without filled heads represent properties, arrows with empty heads represent subclass relations, and arrows with diamonds represent part of relations.
+Arrows without filled heads represent properties, arrows with empty heads represent subclass relations, and arrows with diamonds represent part-of relations.
 
-<dl><dt>IRI:</dt><dd>http://www.w3.org/ns/mls#</dd><dt>Version IRI:</dt><dd>http://www.w3.org/2016/03/mls#</dd></dl><dl><dt>Other visualisation:</dt><dd><a href="http://eelst.cs.unibo.it/apps/LODE/source?url=http://www.essepuntato.it/tmp/1460029662-ontology">Ontology source</a></dd></dl></div>
+<dl><dt>IRI:</dt><dd>http://www.w3.org/ns/mls#</dd><dt>Version IRI:</dt><dd>http://www.w3.org/2016/10/mls#</dd></dl><dl><dt>Other visualisation:</dt><dd><a href="http://eelst.cs.unibo.it/apps/LODE/source?url=https://raw.githubusercontent.com/ML-Schema/core/master/MLSchema.ttl">Ontology source</a></dd></dl></div>
 
 <div id="mlschema-core-figure" style="text-align: center;" class="figure">
-    <img src="ML-Schema.png" style="width: 100%; min-width: 25em; max-width: 60em" alt="ML Schema core terms">
+    <img src="ML-Schema.png" style="width: 100%; min-width: 35em; max-width: 60em" alt="ML Schema core terms">
     <div class="figcaption"><a href="#mlschema-core-figure">Figure 2</a>.
       The ML Schema core vocabulary.<br>
       The diagram depicts Information Entities as yellow boxes, Processes as blue boxes, and Qualities as green boxes.<br>
@@ -592,7 +591,7 @@ We will illustrate the ML schema by means of two examples.
 </p>
 
 <p>
-Firstly, we illustrate the ML schema with an example derived from the <a href="http://www.openml.org">OpenML</a> portal (see Fig. 2).
+Firstly, we illustrate the ML schema with an example derived from the <a href="http://www.openml.org">OpenML</a> portal (see Fig. 3).
 The example describes entities involved to model a single run of the implementation of a logistic regression algorithm from a Weka machine learning environment.
 The referenced individuals can easily be looked up online.
 For instance, run 100241 can be found on <a href="http://www.openml.org/r/100241">http://www.openml.org/r/100241</a>.
@@ -748,7 +747,7 @@ The evaluation specification <code>:evaluationSpecification1</code> has parts: t
 </p>
 
 <div id="mlschema-example1-figure" style="text-align: center;" class="figure">
-    <img src="ML-Schema-Example1.png" style="width: 100%; min-width: 25em; max-width: 60em" alt="An example concerning ML Run.">
+    <img src="ML-Schema-Example1.png" style="width: 78%; min-width: 20em; max-width: 60em" alt="An example concerning ML Run.">
     <div class="figcaption"><a href="#mlschema-example1-figure">Figure 3</a>.
       An example illustrating a single run of an ML algorithm implementation.<br>
       The diagram depicts Information Entities as yellow boxes, Processes as blue boxes, and Material Entities as red boxes.<br>
@@ -766,7 +765,7 @@ Exposing such metadata may be of use for possible collaborators who may wish to 
 Such information that a study is done within a funded project, may increase their level of trust to the published results.
 </p>
 
-<div id="mlschema-core-figure" style="text-align: center;" class="figure">
+<div id="mlschema-example2-figure" style="text-align: center;" class="figure">
     <img src="ML-Schema-Example2.png" style="width: 100%; min-width: 25em; max-width: 60em" alt="An example concerning ML study">
     <div class="figcaption"><a href="#mlschema-example2-figure">Figure 4</a>.
       An example illustrating ML study.<br>
@@ -1152,10 +1151,7 @@ Such characteristics are often statistical ones (e.g., the number of instances o
 
 
 <div id="mapping">
-<h2><span class="secno">3.&nbsp;</span>The
-relationship of ML Schema to&nbsp;other proposed ontologies and
-vocabularies
-for the domain of machine learning and data mining</h2>
+<h2><span class="secno">3.&nbsp;</span>The relationship of ML Schema to&nbsp;other machine learning and data mining ontologies</h2>
 In this section, we present the relationship of the MLSchema to other
 proposed ontologies and vocabularies for the domain of machine learning
 and data mining. The development of MLSchema was highly influenced
@@ -1309,22 +1305,22 @@ ontologies and vocabularies</caption><!-- Table 1-->
 <tr>
 <td>ModelEvaluation</td>
 <td>Generalization evaluation</td>
-<td></td>
+<td>ModelPerformance</td>
 <td>Evaluation</td>
 <td>N/A</td>
 </tr>
 <tr>
 <td>EvaluationMeasure</td>
 <td>Evaluation datum</td>
-<td>EvaluationFunction</td>
+<td>ModelEvaluationMeasure</td>
 <td>Evaluation measure</td>
 <td>mexperf:PerformanceMeasure</td>
 </tr>
 <tr>
 <td>EvaluationSpecification</td>
 <td>N/A</td>
-<td></td>
-<td></td>
+<td>N/A</td>
+<td>N/A</td>
 <td>N/A</td>
 </tr>
 <tr>
@@ -1384,6 +1380,10 @@ developed with a primary use case in meta-mining, that is meta-learning
 extended to an analysis of full DM processes. At the level of both
 single algorithms and more complex workflows, it follows a very similar
 modeling pattern as described in the MLSchema.
+To support meta-mining, DMOP contains a taxonomy of algorithms used in DM processes which are described in detail in terms of their underlying assumptions,
+cost functions, optimization strategies, generated models or pattern sets, and other properties.
+Such a "glass box" approach which makes explicit internal algorithm characteristics allows meta-learners using DMOP to generalize over algorithms and their properties,
+including those algorithms which were not used for training meta-learners.
 </p>
 <div>
 <h2>The MEX vocabulary</h2>
@@ -1404,7 +1404,7 @@ outcomes.&nbsp;</p>
 <div id="acknowledgements">
 <h2><span class="secno">4. </span>Acknowledgements</h2>
 This section is non-normative.
-
+<br/>
 The editors of this document thank the developers of the tools that were used to create the ML Schema and parts of this document.
 Those tools were of major help for developing ML Schema as well as the documentation.
 
@@ -1419,6 +1419,7 @@ Those tools were of major help for developing ML Schema as well as the documenta
 
 <div id="references">
 <h2> <span class="mw-headline">5. References </span></h2>
+
 <dl>
 <dt> <span id="bib-BFO">[BFO]</span>
 </dt>
@@ -1427,6 +1428,51 @@ Those tools were of major help for developing ML Schema as well as the documenta
 Ontologies with Basic Formal Ontology</cite></a>.
 The MIT Press (2015)</dd>
 </dl>
+
+<dl>
+<dt> <span id="bib-DMOP">[DMOP]</span>
+</dt>
+<dd> C. Maria Keet, Agnieszka Ławrynowicz, Claudia d’Amato,
+Alexandros Kalousis, Phong Nguyen, Raul Palma, Robert Stevens, Melanie
+Hilario, <a class="external text" href="http://dx.doi.org/10.1016/j.websem.2015.01.001" rel="nofollow" title="http://dx.doi.org/10.1016/j.websem.2015.01.001"><cite>Data
+Mining OPtimization Ontology</cite></a>. Web Semantics:
+Science, Services and Agents on the World Wide Web (2015) 32:43-53. </dd>
+</dl>
+
+
+
+<dl>
+<dt> <span id="bib-DUBLIN-CORE">[DUBLIN-CORE]</span>
+</dt>
+Dublin Core Metadata Terms <a class="external text" href="http://dublincore.org/documents/dcmi-terms/" rel="nofollow" title="http://dublincore.org/documents/dcmi-terms/"><cite>http://dublincore.org/documents/dcmi-terms/
+</cite></a>
+</dl>
+<dl>
+<dl>
+<dt> <span id="bib-DOAP">[DOAP]</span>
+</dt>
+DOAP <a class="external text" href="https://github.com/edumbill/doap/wiki" rel="nofollow" title="https://github.com/edumbill/doap/wiki"><cite>https://github.com/edumbill/doap/wiki
+</cite></a>
+</dl>
+
+<dl>
+<dt> <span id="bib-Expose">[EXPOSE]</span>
+</dt>
+<dd> Vanschoren, J., Blockeel, H., Pfahringer, B., Holmes, G,
+<a class="external text" href="http://link.springer.com/article/10.1007/s10994-011-5277-0" rel="nofollow" title="http://link.springer.com/article/10.1007/s10994-011-5277-0"><cite>Experiment
+databases - A
+new way to share, organize and learn from experiments
+</cite></a>. Machine Learning (2012) 87(2):127-158. </dd>
+</dl>
+
+<dl>
+<dt> <span id="bib-FOAF">[FOAF]</span>
+</dt>
+<dd> Dan Brickley, Libby Miller.
+<a class="external text" href="http://xmlns.com/foaf/spec/" rel="nofollow"><cite>FOAF Vocabulary Specification 0.98</cite></a>.
+9 August 2010. URL: <a href="http://xmlns.com/foaf/spec/">http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/</a></dd>
+</dl>
+
 <dl>
 <dt> <span id="bib-MEX">[MEX]</span>
 </dt>
@@ -1457,34 +1503,6 @@ ontology for biomedical investigations</cite></a>. PLoS
 ONE (2016) 11(4): e0154556. </dd>
 </dl>
 <dl>
-<dt> <span id="bib-DMOP">[DMOP]</span>
-</dt>
-<dd> C. Maria Keet, Agnieszka Ławrynowicz, Claudia d’Amato,
-Alexandros Kalousis, Phong Nguyen, Raul Palma, Robert Stevens, Melanie
-Hilario, <a class="external text" href="http://dx.doi.org/10.1016/j.websem.2015.01.001" rel="nofollow" title="http://dx.doi.org/10.1016/j.websem.2015.01.001"><cite>Data
-Mining OPtimization Ontology</cite></a>. Web Semantics:
-Science, Services and Agents on the World Wide Web (2015) 32:43-53. </dd>
-</dl>
-<dl>
-<dt> <span id="bib-PROVO">[PROV-O]</span>
-</dt>
-PROV-O: The PROV Ontology <a class="external text" href="https://www.w3.org/TR/prov-o/" rel="nofollow" title="https://www.w3.org/TR/prov-o/"><cite>https://www.w3.org/TR/prov-o/
-</cite></a>
-</dl>
-<dl>
-<dt> <span id="bib-DUBLIN">[DUBLIN-CORE]</span>
-</dt>
-Dublin Core Metadata Terms <a class="external text" href="http://dublincore.org/documents/dcmi-terms/" rel="nofollow" title="http://dublincore.org/documents/dcmi-terms/"><cite>http://dublincore.org/documents/dcmi-terms/
-</cite></a>
-</dl>
-<dl>
-<dl>
-<dt> <span id="bib-DOAP">[DOAP]</span>
-</dt>
-DOAP <a class="external text" href="https://github.com/edumbill/doap/wiki" rel="nofollow" title="https://github.com/edumbill/doap/wiki"><cite>https://github.com/edumbill/doap/wiki
-</cite></a>
-</dl>
-<dl>
 <dt> <span id="bib-OntoDM-core">[OntoDM-core]</span>
 </dt>
 <dd>
@@ -1506,14 +1524,37 @@ Investigations
 257-271. </dd>
 </dl>
 <dl>
-<dt> <span id="bib-Expose">[EXPOSE]</span>
+<dt> <span id="bib-OWL2-OVERVIEW">[OWL2-OVERVIEW]</span>
 </dt>
-<dd> Vanschoren, J., Blockeel, H., Pfahringer, B., Holmes, G,
-<a class="external text" href="http://link.springer.com/article/10.1007/s10994-011-5277-0" rel="nofollow" title="http://link.springer.com/article/10.1007/s10994-011-5277-0"><cite>Experiment
-databases - A
-new way to share, organize and learn from experiments
-</cite></a>. Machine Learning (2012) 87(2):127-158. </dd>
+<dd>
+W3C OWL Working Group. <a class="external text" a href="http://www.w3.org/TR/2009/REC-owl2-overview-20091027/" rel="nofollow" title="OWL 2 Web Ontology Language: Overview"><cite>OWL 2 Web Ontology Language: Overview.</cite></a> 
+27 October 2009. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2009/REC-owl2-overview-20091027/">http://www.w3.org/TR/2009/REC-owl2-overview-20091027/</a>
+</dd>
 </dl>
+<dl>
+<dt> <span id="bib-PROVO">[PROV-O]</span>
+</dt>
+Timothy Lebo, Satya Sahoo, Deborah McGuinness, <a class="external text" href="https://www.w3.org/TR/prov-o/" rel="nofollow" title="https://www.w3.org/TR/prov-o/"><cite>PROV-O: The PROV Ontology</cite></a> 
+W3C Recommendation 30 April 2013, URL: <a href="https://www.w3.org/TR/prov-o/">https://www.w3.org/TR/prov-o/</a>
+
+</dl>
+<dl>
+<dt> <span id="bib-RDF-CONCEPTS">[RDF-CONCEPTS]</span>
+</dt>
+<dd> Richard Cyganiak, David Wood, Markus Lanthaler, Editors.
+<a class="external text" href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/" rel="nofollow"><cite>RDF 1.1 Concepts and Abstract Syntax</cite></a>.
+25 February 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/</a></dd>
+</dl>
+
+<dl>
+<dt> <span id="bib-XMLSCHEMA11-2">[XMLSCHEMA11-2]</span>
+</dt>
+<dd>
+Henry S. Thompson; et al. <a class="external text" href="http://www.w3.org/TR/2012/REC-xmlschema11-2-20120405/" rel="nofollow" title="W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes."><cite>W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes.</cite></a> 5 April 2012. W3C Recommendation 
+URL: <a href="http://www.w3.org/TR/2012/REC-xmlschema11-2-20120405/">http://www.w3.org/TR/2012/REC-xmlschema11-2-20120405/</a>
+</dd>
+</dl>
+
 </dl>
 </div>
 
